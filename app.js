@@ -21,3 +21,5 @@ module.exports = app
 
 //https://scotch.io/@PratyushB/adding-domain-registered-on-godaddy-to-heroku-app
 //heroku config:get MONGODB_URI
+
+//git push heroku master
