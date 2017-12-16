@@ -11,7 +11,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json())
 app.use('/api', api)
 
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs') //EJS
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
 	res.render('index')

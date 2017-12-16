@@ -28,3 +28,4 @@ app.listen(port, () =>{
 */
 //Robo 3T
 //para correr mongodb => mongod --port 27017 --dbpath C:\MongoDB\data\db
+//Program Files\MongoDB\Server\3.6\bin>mongod.exe --port 27017 --dbpath D:\Website\MongoDB\data\db
