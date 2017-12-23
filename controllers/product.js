@@ -13,6 +13,18 @@ function getProduct(req, res){
 	})
 }
 
+function getProductByTag(req, res){
+	let tag = req.params.productId;
+	Product.find({'tag': tag}, (err, product) => {
+		if(err) return res.status(500).send({message: `Error al realizar la petición $(err)`})
+		if(!product) return res.status(404).send({message: `El producto no existe`})
+
+		res.render('product_details', {
+			productId: req.params.productId,
+		}); 	
+	})
+}
+
 function getProducts(req, res){
 	Product.find({}, (err, products) => {
 		if(err) return res.status(500).send({message: `Error al realizar la petición $(err)`})

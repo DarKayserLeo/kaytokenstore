@@ -5,8 +5,13 @@ const Schema = mongoose.Schema;
 
 const ProductSchema = Schema({
 	name: String,
-	tipo: String,
-	precio: Number
+	price: Number,
+	state: String,
+	language: String,
+	quantity: Number,
+	frontImage: String,
+	backImage: String,
+	tag: String
 });
 
 //para exportar el modelo
