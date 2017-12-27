@@ -23,17 +23,16 @@ app.get('/', function(req, res){
 app.get('/product/:productId', function(req, res){
 	
 	let tag = req.params.productId;
-	Product.findOne({'tag': tag}, (err, product) => {
+	Product.findOne({'tag': tag}).populate('options', ['name', 'tag', 'frontImage']).exec(function (err, product){
 		if(err) return res.status(500).send({message: `Error al realizar la petición $(err)`})
 		if(!product) return res.status(404).send({message: `El producto no existe`})
-
 		//res.status(200).send({product: product})
-
-		//res.set('Content-Type', 'application/javascript');
-		
-		res.render('product_details', {product}); 	
+		res.render('product_details', {product}); 
 	})
+})
 
+app.get('/darkayserleo', function(req, res){
+	res.render('new_product')
 })
 
 module.exports = app

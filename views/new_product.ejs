@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	
+</head>
+<body>
+	<form action="/api/save-product" method="post" encType="multipart/form-data">
+		<div>
+	    	<label for="name">Nombre:</label>
+	    	<input type="text" id="name" name="name">
+	  	</div>
+
+	  	<div>
+	    	<label for="price">Precio:</label>
+	    	<input type="text" id="price" name="price">
+	  	</div>
+	  	<br>	
+	  	<div>
+	    	<label for="state">Estado:</label>
+	    	<select name="state">
+		  		<option value="NEW">Nuevo</option>
+		  		<option value="USED">Usado</option>
+			</select>
+	  	</div>
+		<br>
+		<div>
+			<label for="language">Idioma:</label>
+		    <select name="language">
+				<option value="EN">Ingles</option>
+			  	<option value="SP">Español</option>
+			  	<option value="FR">Frances</option>
+			  	<option value="DE">Aleman</option>
+			  	<option value="IT">Italiano</option>
+			  	<option value="JP">Japones</option>
+			</select>
+		</div>
+		<br>
+		<div>
+	    	<label for="stock">Cantidad:</label>
+	    	<select name="stock">
+		  		<% for(var i = 1; i < 101; i++){%>
+		  			<option value=<%= ""+ i +"" %>> <%= i %></option>
+		  		<%}%>
+			</select>
+	  	</div>
+		<br>
+		<div>
+	    	<label for="code">Codigo:</label>
+	    	<input type="text" id="code" name="code">
+	  	</div>
+		<br>
+		<div>
+	    	<label for="rarity">Rareza:</label>
+	    	<input type="text" id="rarity" name="rarity">
+	  	</div>
+	  	<div>
+	    	<label for="description">Descripción:</label>
+	    	<textarea id="description" name="description"></textarea>
+	  	</div>
+	    <br>
+		<input type="file" name="frontImage" id="frontImage" />
+
+	  	<div class="button">
+	    	<button type="submit">Guardar</button>
+	  	</div>
+	</form>
+  </body>
+</html>

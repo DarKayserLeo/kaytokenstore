@@ -199,14 +199,22 @@ Body Section
             </div>
 			</div>
 			<div class="span7">
-				<h3><%= product.name %></h3>
+				<h3><%= product.code + " " + product.name + " - " + product.rarity %></h3>
 				<hr class="soft"/>
 				
 				<form class="form-horizontal qtyFrm">
 				  <div class="control-group">
 					<label class="control-label"><span>S/. <%= product.price  %></span></label>
 					<div class="controls">
-					<input type="number" class="span6" placeholder="Cantidad">
+						<select class="selectpicker span4" data-style="btn-info" name="selectpicker">
+					            <% 
+					            	var rows = [];
+					            	for(var i=0; i<product.stock; i++) rows.push(i+1); 
+					            	rows.forEach(function(row){ %>
+					            		<option value="<%= row %>"><%= row %></option>
+					            <% }) %>
+					    </select>
+    
 					</div>
 				  </div>
 				
@@ -237,9 +245,17 @@ Body Section
 					</div>
 				  </div>
 				  <h4>En stock</h4>
-				  <p>2 monsters <br>
-				  If a card(s) you control would be destroyed by battle or card effect, you can destroy 1 of your monsters this card points to, instead.
+				  <% var pDescription = product.description; var description = pDescription.split("\n"); %>
 				  <p>
+				  <% var i = 0; %>
+				  <% description.forEach(function(row){ %>
+				  	<% if (i == 0) {%>
+				  		<strong> <%=  row %> </strong> <br>
+				  	<%} else{%>
+				  		<%=  row %> <br>
+				  	<% }%>
+				  <% i++; }); %>
+				  </p>
 				  <button type="submit" class="shopBtn"><span class=" icon-shopping-cart"></span> Añadir al carrito</button>
 				</form>
 			</div>
@@ -250,63 +266,38 @@ Body Section
 				<div class="row-fluid">	
 					<div id="newProductCar" class="carousel slide">
 	            		<div class="carousel-inner">
-							<div class="item active">
-				  				<ul class="thumbnails">
-									<li class="span3">
-										<div class="thumbnail">
-											<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> VER</a>
-											<!--<a href="#" class="tag"></a>-->
-											<a href="product_details.html"><img src="img/yugioh-cards/proxy-dragon-german.png" alt="bootstrap-ring"></a>
-										</div>
-									</li>
-									<li class="span3">
-					  					<div class="thumbnail">
-										<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> VER</a>
+							<% var count = 0;
+							var globalCount = 0;
+							options = product.options;
+							options.forEach(function(option){
+								if(globalCount == 0){%>
+									<div class="item active">
+										<ul class="thumbnails">	
+								<%}
+								if(count == 4){
+									count = 0;%>
+									<div class="item">
+								<%}%>
+
+								<li class="span3">
+									<div class="thumbnail">
+										<a class="zoomTool" href=<%= option.tag %> title="add to cart"><span class="icon-search"></span> VER</a>
 										<!--<a href="#" class="tag"></a>-->
-										<a  href="product_details.html"><img src="img/yugioh-cards/proxy-dragon-french.png" alt=""></a>
-									  </div>
-									</li>
-									<li class="span3">
-									  <div class="thumbnail">
-										<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> VER</a>
-										<!--<a href="#" class="tag"></a>-->
-										<a  href="product_details.html"><img src="img/yugioh-cards/proxy-dragon-spanish.png" alt=""></a>
-									  </div>
-									</li>
-									<li class="span3">
-									  <div class="thumbnail">
-										<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> VER</a>
-										<a  href="product_details.html"><img src="img/yugioh-cards/proxy-dragon-japanese.png" alt=""></a>
-									  </div>
-									</li>
-				  				</ul>
-				  			</div>
-				  			<div class="item">
-				  				<ul class="thumbnails">
-									<li class="span3">
-										<div class="thumbnail">
-											<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> VER</a>
-											<!--<a href="#" class="tag"></a>-->
-											<a href="product_details.html"><img src="img/yugioh-cards/proxy-dragon-german.png" alt="bootstrap-ring"></a>
-										</div>
-									</li>
-									<li class="span3">
-					  					<div class="thumbnail">
-										<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> VER</a>
-										<!--<a href="#" class="tag"></a>-->
-										<a  href="product_details.html"><img src="img/yugioh-cards/proxy-dragon-french.png" alt=""></a>
-									  </div>
-									</li>
-									<li class="span3">
-									  <div class="thumbnail">
-										<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> VER</a>
-										<!--<a href="#" class="tag"></a>-->
-										<a  href="product_details.html"><img src="img/yugioh-cards/proxy-dragon-spanish.png" alt=""></a>
-									  </div>
-									</li>
-				  				</ul>
-				  			</div>
-			   				
+										<a href=<%= option.tag %>><img src= <%= "../" + option.frontImage %> alt="bootstrap-ring"></a>
+										<strong><p><%= option.name %></p></strong>
+									</div>
+								</li>
+
+								<%count++;
+								globalCount++;
+								if(count == 4){%>
+										</ul>
+									</div>
+								<%}
+							});
+							if(count < 4)%>
+									</ul>
+								</div>
 			   			</div>
 			  			<a class="left carousel-control" href="#newProductCar" data-slide="prev">&lsaquo;</a>
 	            		<a class="right carousel-control" href="#newProductCar" data-slide="next">&rsaquo;</a>

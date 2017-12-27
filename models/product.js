@@ -8,10 +8,15 @@ const ProductSchema = Schema({
 	price: Number,
 	state: String,
 	language: String,
-	quantity: Number,
+	description: String,
+	stock: Number,
+	code: String,
+	rarity: String,
 	frontImage: String,
 	backImage: String,
-	tag: String
+	tag: String,
+	options: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product'}],
+	created: { type: Date, default: Date.now }
 });
 
 //para exportar el modelo

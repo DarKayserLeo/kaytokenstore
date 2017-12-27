@@ -1,6 +1,9 @@
 'use strict'
 
 const Product = require('../models/product');
+const path = require('path');
+const fs = require('fs');
+const appDir = path.dirname(require.main.filename);
 
 function getProduct(req, res){
 	let productId = req.params.productId;
@@ -36,17 +39,61 @@ function getProducts(req, res){
 }
 
 function saveProduct(req, res){
-	console.log(req.body);
+	//console.log(req.files);
+	if (!req.files)
+    	return res.status(400).send('No files were uploaded.');
+	//console.log(req.body);
 
 	let product = new Product();
 	product.name = req.body.name;
-	product.tipo = req.body.tipo;
-	product.precio = req.body.precio;
+	product.price = req.body.price;
+	product.state = req.body.state;
+	product.language = req.body.language;
+	product.stock = req.body.stock;
+	product.code = req.body.code;
+	product.rarity = req.body.rarity;
+	product.description = req.body.description;
+	var code = product.code;
+	code = code.toLowerCase();
+	code = code.replace(/ /g, '-');
+	var name = product.name;
+	name = name.toLowerCase();
+	name = name.replace(/ /g, '-');
+	var rarity = product.rarity;
+	rarity = rarity.toLowerCase();
+	rarity = rarity.replace(/ /g, '-');
+	product.tag = code + '-' + name + '-' + rarity;
 
-	product.save((err, productStored) => {
-		if(err) res.status(500).send(`Error al guardar campo ${err}`);
-		res.status(200).send({product: productStored})
-	});
+	if(product.state == 'NEW') product.backImage = "img/yugioh/card-back.png"
+
+	var s_code = product.code.split("-");
+
+	let frontImage = req.files.frontImage;
+
+
+	var dir = appDir + '/public/img/yugioh/' + s_code[0] + "/"
+
+	if (!fs.existsSync(dir)){
+	    fs.mkdirSync(dir);
+	}
+
+	//product.frontImage = 'img/yugioh/' + s_code[0] + "/"
+
+	var frontImageName = req.files.frontImage.name;
+	frontImageName = frontImageName.toLowerCase();
+	frontImageName = frontImageName.replace(/ /g, '-');
+
+	frontImage.mv(dir + frontImageName, function(err) {
+    	if (err)
+      		return res.status(500).send(err);
+
+      	product.frontImage = 'img/yugioh/' + s_code[0] + '/' +  frontImageName
+
+      	product.save((err, productStored) => {
+			if(err) res.status(500).send(`Error al guardar campo ${err}`);
+			res.status(200).send({product: productStored})
+		});
+	})
 }
 
 function updateProduct(req, res){

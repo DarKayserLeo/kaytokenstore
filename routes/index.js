@@ -2,14 +2,17 @@
 'use stricts'
 
 const express = require('express')
+const fileUpload = require('express-fileupload')
 const ProductController = require('../controllers/product')
 const UserController = require('../controllers/user')
 const auth = require('../middlewares/auth')
 const api = express.Router() 
+api.use(fileUpload()); //indicamos que use fileupload
 
 api.get('/products', ProductController.getProducts);
 api.get('/product/:productId', ProductController.getProduct);
 api.post('/product', ProductController.saveProduct);
+api.post('/save-product', ProductController.saveProduct);
 api.put('/product/:productId', ProductController.updateProduct); //Actualizar
 api.delete('/product/:productId', ProductController.deleteProduct); //Eliminar 
 

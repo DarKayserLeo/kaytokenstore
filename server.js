@@ -2,6 +2,8 @@
 //npm i -S body-parser
 //npm i -D nodemon
 //npm i -S mongoose
+//npm install --save express-fileupload
+//npm install file-system --save
 
 'use strict'
 
@@ -28,4 +30,5 @@ app.listen(port, () =>{
 */
 //Robo 3T
 //para correr mongodb => mongod --port 27017 --dbpath C:\MongoDB\data\db
-//Program Files\MongoDB\Server\3.6\bin>mongod.exe --port 27017 --dbpath D:\Website\MongoDB\data\db
+//cd Program Files\MongoDB\Server\3.6\bin
+//mongod.exe --port 27017 --dbpath D:\Website\MongoDB\data\db
