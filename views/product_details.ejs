@@ -181,7 +181,7 @@ Body Section
 	<div class="row-fluid">
 			<div class="span5">
 			<div id="myCarousel" class="carousel slide cntr">
-                <div class="carousel-inner">
+                <div class="carousel-inner" data-interval="false">
                   <div class="item active">
                    <a href="#"> <img src= <%= "../" + product.frontImage %> alt="" style="width:100%"></a>
                   </div>
@@ -704,6 +704,11 @@ accompanied by English versions from the 1914 translation by H. Rackham.
     <script type='text/javascript'>
 	  var product =<%-JSON.stringify(product)%>
 	  
+		$('#myCarousel').carousel({
+			pause: true,
+			interval: false
+	  	});
+
 	</script>
   </body>
 </html>
