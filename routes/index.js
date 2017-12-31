@@ -11,6 +11,7 @@ api.use(fileUpload()); //indicamos que use fileupload
 
 api.get('/products', ProductController.getProducts);
 api.get('/product/:productId', ProductController.getProduct);
+api.get('/last-products', ProductController.getLastProducts);
 api.post('/product', ProductController.saveProduct);
 api.post('/save-product', ProductController.saveProduct);
 api.put('/product/:productId', ProductController.updateProduct); //Actualizar

@@ -38,6 +38,16 @@ function getProducts(req, res){
 	
 }
 
+function getLastProducts(req, res){ //esto lo estoy llamando directo en el index 
+	let cutoff = new Date();
+	cutoff.setDate(cutoff.getDate()-7);
+	console.log(cutoff)
+	Product.find({'created': {$gte: cutoff}}, (err, products) =>{ 
+		res.status(200).send({products})
+		//res.render('index', {new_products}); 	
+	});
+}
+
 function saveProduct(req, res){
 	//console.log(req.files);
 	if (!req.files)
@@ -126,6 +136,7 @@ function deleteProduct(req, res){
 module.exports = {
 	getProduct,
 	getProducts,
+	getLastProducts,
 	saveProduct,
 	updateProduct,
 	deleteProduct

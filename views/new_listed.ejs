@@ -1,0 +1,64 @@
+<h3>Nuevos Productos </h3>
+
+<%
+	new_products
+%>
+
+<hr class="soften"/>
+<div class="row-fluid">
+	<div id="newProductCar" class="carousel slide">
+		<div class="carousel-inner">
+			<% var count = 0;
+				var globalCount = 0;
+				
+				new_products.forEach(function(product){
+					if(globalCount == 0){%>
+						<div class="item active">
+							<ul class="thumbnails">	
+					<%}
+					if(count == 4){
+						count = 0;%>
+						<div class="item">
+							<ul class="thumbnails">
+					<%}%>
+
+					<li class="span3">
+						<div class="thumbnail">
+							<a class="zoomTool" href=<%= "/product/" + product.tag %> title="add to cart"><span class="icon-search"></span> VER</a>
+							<!--<a href="#" class="tag"></a>-->
+							<a href=<%= "/product/" + product.tag %>><img src= <%= "../" + product.frontImage %> alt="bootstrap-ring"></a>
+							<!--<strong><p><%= product.name %></p></strong>-->
+						</div>
+					</li>
+
+					<%count++;
+					globalCount++;
+					if(count == 4){%>
+							</ul>
+						</div>
+					<%}
+				});
+				if(count < 4){%>
+						</ul>
+					</div>
+				<%}%>
+		</div>
+		<a class="left carousel-control" href="#newProductCar" data-slide="prev">&lsaquo;</a>
+		<a class="right carousel-control" href="#newProductCar" data-slide="next">&rsaquo;</a>
+	</div>
+</div>
+<!--
+<script src="/js/jquery.js"></script>
+<script>
+	$(document).ready(function() {
+    	var pathname = window.location.pathname;
+		console.log(pathname)
+    $.ajax({
+        url: pathname + "api/last-products"
+    }).then(function(new_products) {
+       console.log(new_products);
+    });
+});
+
+</script>
+-->

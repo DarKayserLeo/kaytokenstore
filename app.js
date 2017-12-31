@@ -16,8 +16,18 @@ app.use('/api', api)
 app.set('view engine', 'ejs') //EJS
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', function(req, res){
-	res.render('index')
+app.get('/', function(req, res){ //este es el render de mi index 
+	//por lo visto todo anidado 
+	let cutoff = new Date(); 
+	cutoff.setDate(cutoff.getDate()-7);
+	//console.log(cutoff)
+	Product.find({'created': {$gte: cutoff}}).limit(20).exec(function(err, new_products){
+		//res.status(200).send({new_products})
+		//res.render('index', {new_products}); 
+		res.render('index', {new_products})
+	});
+
+	
 })
 
 app.get('/product/:productId', function(req, res){
