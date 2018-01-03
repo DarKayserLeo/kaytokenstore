@@ -1,672 +1,527 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Twitter Bootstrap shopping cart</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Bootstrap styles -->
-    <link href="../css/bootstrap.css" rel="stylesheet"/>
-    <!-- Customize styles -->
-    <link href="../css/style.css" rel="stylesheet"/>
-    <!-- font awesome styles -->
-	<link href="../css/font-awesome/css/font-awesome.css" rel="stylesheet">
-		<!--[if IE 7]>
-			<link href="css/font-awesome-ie7.min.css" rel="stylesheet">
-		<![endif]-->
+<title>New Shop a E-Commerce Online Shopping Category Flat Bootstrap Responsive Website Template | Single :: w3layouts</title>
+<!--css-->
+<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../css/font-awesome.css" rel="stylesheet">
+<!--css-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="New Shop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script src="../js/jquery.min.js"></script>
+<link href='//fonts.googleapis.com/css?family=Cagliostro' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,800italic,800,700italic,700,600italic,600,400italic,300italic,300' rel='stylesheet' type='text/css'>
+<!--search jQuery-->
+	<script src="../js/main.js"></script>
+<!--search jQuery-->
+<script type="text/javascript" src="../js/bootstrap-3.1.1.min.js"></script>
+ <!-- cart -->
+<script src="../js/simpleCart.min.js"></script>
+<!-- cart -->
+  <script defer src="../js/jquery.flexslider.js"></script>
+<link rel="stylesheet" href="../css/flexslider.css" type="text/css" media="screen" />
+<script src="../js/imagezoom.js"></script>
+<script>
+// Can also be used with $(document).ready()
+$(window).load(function() {
+  $('.flexslider').flexslider({
+    animation: "slide",
+    controlNav: "thumbnails"
+  });
+});
+</script>
 
-		<!--[if lt IE 9]>
-			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
+  <!--mycart-->
+  <!--start-rate-->
+<script src="../js/jstarbox.js"></script>
+	<link rel="stylesheet" href="../css/jstarbox.css" type="text/css" media="screen" charset="utf-8" />
+		<script type="text/javascript">
+			jQuery(function() {
+			jQuery('.starbox').each(function() {
+				var starbox = jQuery(this);
+					starbox.starbox({
+					average: starbox.attr('data-start-value'),
+					changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
+					ghosting: starbox.hasClass('ghosting'),
+					autoUpdateAverage: starbox.hasClass('autoupdate'),
+					buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
+					stars: starbox.attr('data-star-count') || 5
+					}).bind('starbox-value-changed', function(event, value) {
+					if(starbox.hasClass('random')) {
+					var val = Math.random();
+					starbox.next().text(' '+val);
+					return val;
+					} 
+				})
+			});
+		});
+		</script>
+<!--//End-rate-->
+<link href="../css/owl.carousel.css" rel="stylesheet">
+<script src="../js/owl.carousel.js"></script>
+	<script>
+		$(document).ready(function() {
+		$("#owl-demo").owlCarousel({
+			items : 1,
+			lazyLoad : true,
+			autoPlay : true,
+			navigation : false,
+			navigationText :  false,
+			pagination : true,
+		});
+		});
+	</script>
 
-	<!-- Favicons -->
-    <link rel="shortcut icon" href="assets/ico/favicon.ico">
-  </head>
+</head>
 <body>
-<!-- 
-	Upper Header Section 
--->
-<div class="navbar navbar-inverse navbar-fixed-top">
-	<div class="topNav">
-		<div class="container">
-			<div class="alignR">
-				<div class="pull-left socialNw">
-					<a href="#"><span class="icon-twitter"></span></a>
-					<a href="#"><span class="icon-facebook"></span></a>
-					<a href="#"><span class="icon-youtube"></span></a>
-					<a href="#"><span class="icon-tumblr"></span></a>
-				</div>
-				<a href="index.html"> <span class="icon-home"></span> Inicio</a> 
-				<a href="#"><span class="icon-user"></span> My Account</a> 
-				<a href="register.html"><span class="icon-edit"></span> Free Register </a> 
-				<a href="contact.html"><span class="icon-envelope"></span> Contact us</a>
-				<a href="cart.html"><span class="icon-shopping-cart"></span> 2 Item(s) - <span class="badge badge-warning"> S/.234.78</span></a>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!--
-Lower Header Section 
--->
-<div class="container">
-<div id="gototop"> </div>
-<header id="header">
-
-</header>
-
-<!--
-Navigation Bar Section 
--->
-<div class="navbar">
-	  <div class="navbar-inner">
-			<form action="#" class="search-form">
-			  	<input type="text" placeholder="Buscar" class="search-query span2">
-			  	<button><span class="icon-search"></span></button>
-			</form>	
-		</div>
-	</div>
-<!-- 
-Body Section 
--->
-	<div class="row">
-<div id="sidebar" class="span3">
-<div class="well well-small">
-	<ul class="nav nav-list">
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Fashion</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Watches</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Fine Jewelry</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Fashion Jewelry</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Engagement & Wedding</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Men's Jewelry</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Vintage & Antique</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Loose Diamonds </a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>Loose Beads</a></li>
-		<li><a href="products.html"><span class="icon-chevron-right"></span>See All Jewelry & Watches</a></li>
-		<li style="border:0"> &nbsp;</li>
-		<li> <a class="totalInCart" href="cart.html"><strong>Total Amount  <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span></strong></a></li>
-	</ul>
-</div>
-			  <!--	
-			  <div class="well well-small alert alert-warning cntr">
-				  <h2>15% de descuento</h2>
-				  <p> 
-					 Válido para compras mayores a S/.150. <br><br><a class="defaultBtn" href="#">Click here </a>
-				  </p>
-			  </div>
-			  -->
-			  <div class="well well-small" ><a href="#"><img src="assets/img/paypal.jpg" alt="payment method paypal"></a></div>
-			
-			<a class="shopBtn btn-block" href="#">Los mas vendidos <br><small>Click para ver</small></a>
-			<br>
-			<br>
-			<ul class="nav nav-list promowrapper">
-			<li>
-			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> VER</a>
-				<img src="img/yugioh-cards/borreload-dragon.png" alt="bootstrap ecommerce templates">
-				<div class="caption">
-				  <h4><a class="defaultBtn" href="product_details.html">VER</a> <span class="pull-right">S/.99.00</span></h4>
-				</div>
-			  </div>
-			</li>
-			<li style="border:0"> &nbsp;</li>
-			<li>
-			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> VER</a>
-				<img src="img/yugioh-cards/firewall-dragon.png" alt="shopping cart template">
-				<div class="caption">
-				  <h4><a class="defaultBtn" href="product_details.html">VER</a> <span class="pull-right">S/.119.00</span></h4>
-				</div>
-			  </div>
-			</li>
-			<li style="border:0"> &nbsp;</li>
-			<li>
-			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> VER</a>
-				<img src="img/yugioh-cards/evenly-matched.png" alt="bootstrap template">
-				<div class="caption">
-				  <h4><a class="defaultBtn" href="product_details.html">VER</a> <span class="pull-right">S/.199.00</span></h4>
-				</div>
-			  </div>
-			</li>
-		  </ul>
-
-	</div>
-	<div class="span9">
-    <ul class="breadcrumb">
-    <li><a href="/">Inicio</a> <span class="divider">/</span></li>
-    <li><a href="products.html">Productos</a> <span class="divider">/</span></li>
-    <li class="active">Ver</li>
-    </ul>	
-	<div class="well well-small">
-	<div class="row-fluid">
-			<div class="span5">
-			<div id="myCarousel" class="carousel slide cntr">
-                <div class="carousel-inner" data-interval="false">
-                  <div class="item active">
-                   <a href="#"> <img src= <%= "../" + product.frontImage %> alt="" style="width:100%"></a>
-                  </div>
-                  <div class="item">
-                     <a href="#"> <img src=<%= "../" + product.backImage %> alt="" style="width:100%"></a>
-                  </div>
-                  <!--
-                  <div class="item">
-                    <a href="#"> <img src="assets/img/e.jpg" alt="" style="width:100%"></a>
-                  </div>
-                  -->
-                </div>
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
-            </div>
-			</div>
-			<div class="span7">
-				<h3><%= product.code + " " + product.name + " - " + product.rarity %></h3>
-				<hr class="soft"/>
-				
-				<form class="form-horizontal qtyFrm">
-				  <div class="control-group">
-					<label class="control-label"><span>S/. <%= product.price  %></span></label>
-					<div class="controls">
-						<select class="selectpicker span4" data-style="btn-info" name="selectpicker">
-					            <% 
-					            	var rows = [];
-					            	for(var i=0; i<product.stock; i++) rows.push(i+1); 
-					            	rows.forEach(function(row){ %>
-					            		<option value="<%= row %>"><%= row %></option>
-					            <% }) %>
-					    </select>
-    
+	<!--header-->
+		<div class="header">
+			<div class="header-top">
+				<div class="container">
+					 <div class="top-left">
+						<a href="#"> Help  <i class="glyphicon glyphicon-phone" aria-hidden="true"></i> +0123-456-789</a>
 					</div>
-				  </div>
-				
-				  <div class="control-group">
-					<label class="control-label"><span>Estado</span></label>
-					<div class="controls">
-					  <select class="span11">
-						  <option>Nuevo</option>
-						  <!--
-						  <option>Purple</option>
-						  <option>Pink</option>
-						  <option>Red</option>
-						  -->
-						</select>
+					<div class="top-right">
+					<ul>
+						<li><a href="checkout.html">Checkout</a></li>
+						<li><a href="login.html">Login</a></li>
+						<li><a href="registered.html"> Create Account </a></li>
+					</ul>
 					</div>
-				  </div>
-				  <div class="control-group">
-					<label class="control-label"><span>Idioma</span></label>
-					<div class="controls">
-					  <select class="span11">
-						  <option>Inglés</option>
-						  <!--
-						  <option>Purple</option>
-						  <option>Pink</option>
-						  <option>Red</option>
-						  -->
-						</select>
-					</div>
-				  </div>
-				  <h4>En stock</h4>
-				  <% var pDescription = product.description; var description = pDescription.split("\n"); %>
-				  <p>
-				  <% var i = 0; %>
-				  <% description.forEach(function(row){ %>
-				  	<% if (i == 0) {%>
-				  		<strong> <%=  row %> </strong> <br>
-				  	<%} else{%>
-				  		<%=  row %> <br>
-				  	<% }%>
-				  <% i++; }); %>
-				  </p>
-				  <button type="submit" class="shopBtn"><span class=" icon-shopping-cart"></span> Añadir al carrito</button>
-				</form>
+					<div class="clearfix"></div>
+				</div>
 			</div>
-			</div>
-			<hr class="softn clr"/>
-			<div class="well well-small">
-				<h3>Más opciones para este producto </h3>
-				<div class="row-fluid">	
-					<div id="newProductCar" class="carousel slide">
-	            		<div class="carousel-inner">
-							<% var count = 0;
-							var globalCount = 0;
-							options = product.options;
-							options.forEach(function(option){
-								if(globalCount == 0){%>
-									<div class="item active">
-										<ul class="thumbnails">	
-								<%}
-								if(count == 4){
-									count = 0;%>
-									<div class="item">
-								<%}%>
-
-								<li class="span3">
-									<div class="thumbnail">
-										<a class="zoomTool" href=<%= option.tag %> title="add to cart"><span class="icon-search"></span> VER</a>
-										<!--<a href="#" class="tag"></a>-->
-										<a href=<%= option.tag %>><img src= <%= "../" + option.frontImage %> alt="bootstrap-ring"></a>
-										<strong><p><%= option.name %></p></strong>
-									</div>
-								</li>
-
-								<%count++;
-								globalCount++;
-								if(count == 4){%>
+			<div class="heder-bottom">
+				<div class="container">
+					<div class="logo-nav">
+						<div class="logo-nav-left">
+							<h1><a href="index.html">Kaytoken Store <span>---- Es hora del duelo</span></a></h1>
+						</div>
+						<div class="logo-nav-left1">
+							<nav class="navbar navbar-default">
+							<!-- Brand and toggle get grouped for better mobile display -->
+							<div class="navbar-header nav_2">
+								<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+							</div> 
+							<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+								<ul class="nav navbar-nav">
+									<li class="active"><a href="/" class="act">Inicio</a></li>	
+									<!-- Mega Menu -->
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Women<b class="caret"></b></a>
+										<ul class="dropdown-menu multi-column columns-3">
+											<div class="row">
+												<div class="col-sm-3  multi-gd-img">
+													<ul class="multi-column-dropdown">
+														<h6>Submenu1</h6>
+														<li><a href="products.html">Clothing</a></li>
+														<li><a href="products.html">Wallets</a></li>
+														<li><a href="products.html">Shoes</a></li>
+														<li><a href="products.html">Watches</a></li>
+														<li><a href="products.html"> Underwear </a></li>
+														<li><a href="products.html">Accessories</a></li>
+													</ul>
+												</div>
+												<div class="col-sm-3  multi-gd-img">
+													<ul class="multi-column-dropdown">
+														<h6>Submenu2</h6>
+														<li><a href="products.html">Sunglasses</a></li>
+														<li><a href="products.html">Wallets,Bags</a></li>
+														<li><a href="products.html">Footwear</a></li>
+														<li><a href="products.html">Watches</a></li>
+														<li><a href="products.html">Accessories</a></li>
+														<li><a href="products.html">Jewellery</a></li>
+													</ul>
+												</div>
+												<div class="col-sm-3  multi-gd-img">
+														<a href="products.html"><img src="images/woo.jpg" alt=" "/></a>
+												</div> 
+												<div class="col-sm-3  multi-gd-img">
+														<a href="products.html"><img src="images/woo1.jpg" alt=" "/></a>
+												</div>
+												<div class="clearfix"></div>
+											</div>
 										</ul>
+									</li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Men <b class="caret"></b></a>
+										<ul class="dropdown-menu multi-column columns-3">
+											<div class="row">
+												<div class="col-sm-3  multi-gd-img">
+													<ul class="multi-column-dropdown">
+														<h6>Submenu1</h6>
+														<li><a href="products1.html">Clothing</a></li>
+														<li><a href="products1.html">Wallets</a></li>
+														<li><a href="products1.html">Shoes</a></li>
+														<li><a href="products1.html">Watches</a></li>
+														<li><a href="products1.html"> Underwear </a></li>
+														<li><a href="products1.html">Accessories</a></li>
+													</ul>
+												</div>
+												<div class="col-sm-3  multi-gd-img">
+													<ul class="multi-column-dropdown">
+														<h6>Submenu 2</h6>
+														<li><a href="products1.html">Sunglasses</a></li>
+														<li><a href="products1.html">Wallets,Bags</a></li>
+														<li><a href="products1.html">Footwear</a></li>
+														<li><a href="products1.html">Watches</a></li>
+														<li><a href="products1.html">Accessories</a></li>
+														<li><a href="products1.html">Jewellery</a></li>
+													</ul>
+												</div>
+												<div class="col-sm-3  multi-gd-img">
+														<a href="products1.html"><img src="images/woo4.jpg" alt=" "/></a>
+												</div> 
+												<div class="col-sm-3  multi-gd-img">
+														<a href="products1.html"><img src="images/woo3.jpg" alt=" "/></a>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+										</ul>
+									</li>
+									<li><a href="codes.html">Short Codes</a></li>
+									<li><a href="mail.html">Contáctanos</a></li>
+								</ul>
+							</div>
+							</nav>
+						</div>
+						<div class="logo-nav-right">
+							<ul class="cd-header-buttons">
+								<li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
+							</ul> <!-- cd-header-buttons -->
+							<div id="cd-search" class="cd-search">
+								<form action="#" method="post">
+									<input name="Search" type="search" placeholder="Search...">
+								</form>
+							</div>	
+						</div>
+						<div class="header-right2">
+							<div class="cart box_1">
+								<a href="checkout.html">
+									<h3> <div class="total">
+										<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+										<img src="images/bag.png" alt="" />
+									</h3>
+								</a>
+								<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+								<div class="clearfix"> </div>
+							</div>	
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--header-->
+		<!--banner-->
+		<div class="banner1">
+			<div class="container">
+				<h3><a href="index.html">Home</a> / <span>Single</span></h3>
+			</div>
+		</div>
+	<!--banner-->
+
+	<!--content-->
+		<div class="content">
+			<!--single-->
+			<div class="single-wl3">
+				<div class="container">
+					<div class="single-grids">
+						<div class="col-md-9 single-grid">
+							<div clas="single-top">
+								<div class="single-left">
+									<img src=<%= "../" + product.frontImage %> data-imagezoom="true" class="img-responsive">
+								</div>
+								<div class="single-right simpleCart_shelfItem">
+									<h4 class="single-product-img"><%= product.code + " " + product.name %></h4>
+									<!--
+									<div class="block">
+										<div class="starbox small ghosting"> </div>
 									</div>
-								<%}
-							});
-							if(count < 4)%>
+									-->
+									<p class="price item_price">S/. <%= product.price.toFixed(2) %></p>
+									<div class="description">
+										<% var pDescription = product.description; var description = pDescription.split("\n"); %>
+										<p>
+										<% var i = 0; %>
+										<% description.forEach(function(row){ %>
+										  	<% if (i == 0) {%>
+										  		<strong> <%=  row %> </strong> <br>
+										  	<%} else{%>
+										  		<%=  row %> <br>
+										  	<% }%>
+										<% i++; }); %>
+										</p>
+									</div>
+									<div class="color-quality">
+										<h6>Quality :</h6>
+											<div class="quantity"> 
+												<div class="quantity-select">                           
+													<div class="entry value-minus1">&nbsp;</div>
+													<div class="entry value1"><span>1</span></div>
+													<div class="entry value-plus1 active">&nbsp;</div>
+												</div>
+											</div>
+												<!--quantity-->
+														<script>
+														$('.value-plus1').on('click', function(){
+															var divUpd = $(this).parent().find('.value1'), newVal = parseInt(divUpd.text(), 10)+1;
+															divUpd.text(newVal);
+														});
+
+														$('.value-minus1').on('click', function(){
+															var divUpd = $(this).parent().find('.value1'), newVal = parseInt(divUpd.text(), 10)-1;
+															if(newVal>=1) divUpd.text(newVal);
+														});
+														</script>
+													<!--quantity-->
+									</div>
+									<div class="women">
+										<span class="size">XL / XXL / S </span>
+										<a href="#" data-text="Add To Cart" class="my-cart-b item_add">Add To Cart</a>
+									</div>
+									<div class="social-icon">
+										<a href="#"><i class="icon"></i></a>
+										<a href="#"><i class="icon1"></i></a>
+										<a href="#"><i class="icon2"></i></a>
+										<a href="#"><i class="icon3"></i></a>
+									</div>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+						<div class="col-md-3 single-grid1">
+							<h3>Relacionados</h3>
+							<div class="recent-grids">
+								<div class="recent-left">
+									<a href="ske-015-kaiser-sea-horse-ultra-rare"><img class="img-responsive " src="../images/yugioh/SKE/kaiser-sea-horse.png" alt=""></a>	
+								</div>
+								<div class="recent-right">
+									<h6 class="best2"><a href="ske-015-kaiser-sea-horse-ultra-rare">SKE-015 Kaiser Sea Horse </a></h6>
+									<div>
+										<span class="size"> <%= product.rarity %> </span>
+									</div>
+									<span class=" price-in1"> S/.8.00</span>
+								</div>	
+								<div class="clearfix"> </div>
+							</div>
+							<br>
+							<div class="recent-grids">
+								<div class="recent-left">
+									<a href="ske-015-kaiser-sea-horse-ultra-rare"><img class="img-responsive " src="../images/yugioh/SKE/kaiser-sea-horse.png" alt=""></a>	
+								</div>
+								<div class="recent-right">
+									<h6 class="best2"><a href="ske-015-kaiser-sea-horse-ultra-rare">SKE-015 Kaiser Sea Horse </a></h6>
+									<div>
+										<span class="size"> <%= product.rarity %> </span>
+									</div>
+									<span class=" price-in1"> S/.8.00</span>
+								</div>	
+								<div class="clearfix"> </div>
+							</div>
+							<br><div class="recent-grids">
+								<div class="recent-left">
+									<a href="ske-015-kaiser-sea-horse-ultra-rare"><img class="img-responsive " src="../images/yugioh/SKE/kaiser-sea-horse.png" alt=""></a>	
+								</div>
+								<div class="recent-right">
+									<h6 class="best2"><a href="ske-015-kaiser-sea-horse-ultra-rare">SKE-015 Kaiser Sea Horse </a></h6>
+									<div>
+										<span class="size"> <%= product.rarity %> </span>
+									</div>
+									<span class=" price-in1"> S/.8.00</span>
+								</div>	
+								<div class="clearfix"> </div>
+							</div>
+							<br><div class="recent-grids">
+								<div class="recent-left">
+									<a href="ske-015-kaiser-sea-horse-ultra-rare"><img class="img-responsive " src="../images/yugioh/SKE/kaiser-sea-horse.png" alt=""></a>	
+								</div>
+								<div class="recent-right">
+									<h6 class="best2"><a href="ske-015-kaiser-sea-horse-ultra-rare">SKE-015 Kaiser Sea Horse </a></h6>
+									<div>
+										<span class="size"> <%= product.rarity %> </span>
+									</div>
+									<span class=" price-in1"> S/.8.00</span>
+								</div>	
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+			</div>
+			<!--single-->
+			<div class="new-arrivals-w3agile">
+					<div class="container">
+						<h3 class="tittle1">The Most Wanted</h3>
+						<div class="arrivals-grids">
+							<div class="col-md-3 arrival-grid simpleCart_shelfItem">
+								<div class="grid-arr">
+									<div  class="grid-arrival">
+										<figure>		
+											<a href="ske-015-kaiser-sea-horse-ultra-rare">
+												<div class="grid-img">
+													<img  src="../images/yugioh/SKE/kaiser-sea-horse.png" class="img-responsive" alt="">
+												</div>		
+											</a>		
+										</figure>	
+									</div>
+									<div class="ribben">
+										<p>NUEVO</p>
+									</div>
+									<div class="ribben2">
+										<p>EN STOCK</p>
+									</div>
+									<div class="women">
+										<h6><a href="ske-015-kaiser-sea-horse-ultra-rare">SKE-015 Kaiser Sea Horse</a></h6>
+										<span class="size">Ultra Rare </span>
+										<p ><em class="item_price">S/.8.00</em></p>
+										<a href="#" data-text="Add To Cart" class="my-cart-b item_add">Añadir al Carrito</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 arrival-grid simpleCart_shelfItem">
+								<div class="grid-arr">
+									<div  class="grid-arrival">
+										<figure>		
+											<a href="ske-015-kaiser-sea-horse-ultra-rare">
+												<div class="grid-img">
+													<img  src="../images/yugioh/SKE/kaiser-sea-horse.png" class="img-responsive" alt="">
+												</div>		
+											</a>		
+										</figure>	
+									</div>
+									<div class="ribben1">
+										<p>AGOTADO</p>
+									</div>
+									<div class="women">
+										<h6><a href="ske-015-kaiser-sea-horse-ultra-rare">SKE-015 Kaiser Sea Horse</a></h6>
+										<span class="size">Ultra Rare </span>
+										<p ><em class="item_price">S/.8.00</em></p>
+										<a href="#" data-text="Add To Cart" class="my-cart-b item_add">Añadir al Carrito</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 arrival-grid simpleCart_shelfItem">
+								<div class="grid-arr">
+									<div  class="grid-arrival">
+										<figure>		
+											<a href="ske-015-kaiser-sea-horse-ultra-rare">
+												<div class="grid-img">
+													<img  src="../images/yugioh/SKE/kaiser-sea-horse.png" class="img-responsive" alt="">
+												</div>		
+											</a>		
+										</figure>	
+									</div>
+									<div class="ribben2">
+										<p>EN STOCK</p>
+									</div>
+									<div class="women">
+										<h6><a href="ske-015-kaiser-sea-horse-ultra-rare">SKE-015 Kaiser Sea Horse</a></h6>
+										<span class="size">Ultra Rare </span>
+										<p ><em class="item_price">S/.8.00</em></p>
+										<a href="#" data-text="Add To Cart" class="my-cart-b item_add">Añadir al Carrito</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 arrival-grid simpleCart_shelfItem">
+								<div class="grid-arr">
+									<div  class="grid-arrival">
+										<figure>		
+											<a href="ske-015-kaiser-sea-horse-ultra-rare">
+												<div class="grid-img">
+													<img  src="../images/yugioh/SKE/kaiser-sea-horse.png" class="img-responsive" alt="">
+												</div>		
+											</a>		
+										</figure>	
+									</div>
+									<div class="ribben">
+										<p>NUEVO</p>
+									</div>
+									<div class="women">
+										<h6><a href="ske-015-kaiser-sea-horse-ultra-rare">SKE-015 Kaiser Sea Horse</a></h6>
+										<span class="size">Ultra Rare </span>
+										<p ><em class="item_price">S/.8.00</em></p>
+										<a href="#" data-text="Add To Cart" class="my-cart-b item_add">Añadir al Carrito</a>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			<!--new-arrivals-->
+		</div>
+		<!--content-->
+		<!---footer--->
+					<div class="footer-w3l">
+						<div class="container">
+							<div class="footer-grids">
+								<div class="col-md-3 footer-grid">
+									<h4>About </h4>
+									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+									<div class="social-icon">
+										<a href="#"><i class="icon"></i></a>
+										<a href="#"><i class="icon1"></i></a>
+										<a href="#"><i class="icon2"></i></a>
+										<a href="#"><i class="icon3"></i></a>
+									</div>
+								</div>
+								<div class="col-md-3 footer-grid">
+									<h4>My Account</h4>
+									<ul>
+										<li><a href="checkout.html">Checkout</a></li>
+										<li><a href="login.html">Login</a></li>
+										<li><a href="registered.html"> Create Account </a></li>
 									</ul>
 								</div>
-			   			</div>
-			  			<a class="left carousel-control" href="#newProductCar" data-slide="prev">&lsaquo;</a>
-	            		<a class="right carousel-control" href="#newProductCar" data-slide="next">&rsaquo;</a>
-			  		</div>
-			  	</div>
-			</div>
-
-
-            <ul id="productDetail" class="nav nav-tabs">
-              <li class="active"><a href="#profile" data-toggle="tab">Productos Relacionados </a></li>	
-              <li class=""><a href="#home" data-toggle="tab">Product Details</a></li>
-            </ul>
-            <div id="myTabContent" class="tab-content tabWrapper">
-            <div class="tab-pane" id="home">
-			  <h4>Product Information</h4>
-                <table class="table table-striped">
-				<tbody>
-				<tr class="techSpecRow"><td class="techSpecTD1">Color:</td><td class="techSpecTD2">Black</td></tr>
-				<tr class="techSpecRow"><td class="techSpecTD1">Style:</td><td class="techSpecTD2">Apparel,Sports</td></tr>
-				<tr class="techSpecRow"><td class="techSpecTD1">Season:</td><td class="techSpecTD2">spring/summer</td></tr>
-				<tr class="techSpecRow"><td class="techSpecTD1">Usage:</td><td class="techSpecTD2">fitness</td></tr>
-				<tr class="techSpecRow"><td class="techSpecTD1">Sport:</td><td class="techSpecTD2">122855031</td></tr>
-				<tr class="techSpecRow"><td class="techSpecTD1">Brand:</td><td class="techSpecTD2">Shock Absorber</td></tr>
-				</tbody>
-				</table>
-				<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-				<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-				<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-				<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-				<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-				<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-				<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-				<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-
-			</div>
-			<div class="tab-pane fade active in" id="profile">
-				<div class="row-fluid">	  
-					<div class="span2">
-						<img src="assets/img/yugioh-cards/pot-of-desires.png" alt="">
-					</div>
-					<div class="span6">
-						<h5>CT14-EN004 Pot of Desires - Ultra Rare </h5>
-						<p>
-						2017 Mega-Tin Mega Pack
-						</p>
-					</div>
-					<div class="span4 alignR">
-					<form class="form-horizontal qtyFrm">
-						<h3> S/.15.00</h3>
-						<input type="number" class="span4" value="1" style="text-align: center;"><br><br>
-						<div class="btn-group">
-							<a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Añadir al carrito</a>	
-						  	<a href="product_details.html" class="shopBtn">VER</a>
+								<div class="col-md-3 footer-grid">
+									<h4>Information</h4>
+									<ul>
+										<li><a href="index.html">Home</a></li>
+										<li><a href="products.html">Products</a></li>
+										<li><a href="codes.html">Short Codes</a></li>
+										<li><a href="mail.html">Mail Us</a></li>
+										<li><a href="products1.html">products1</a></li>
+									</ul>
+								</div>
+								<div class="col-md-3 footer-grid foot">
+									<h4>Contacts</h4>
+									<ul>
+										<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i><a href="#">E Comertown Rd, Westby, USA</a></li>
+										<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i><a href="#">1 599-033-5036</a></li>
+										<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:example@mail.com"> example@mail.com</a></li>
+										
+									</ul>
+								</div>
+							<div class="clearfix"> </div>
+							</div>
+							
 						</div>
-					</form>
 					</div>
-				</div>
-				<hr class="soft">
-				<div class="row-fluid">	  
-					<div class="span2">
-						<img src="assets/img/yugioh-cards/number-71-rebarian-shark.png" alt="">
-					</div>
-					<div class="span6">
-						<h5>CT14-EN005 Number 71: Rebarian Shark - Super Rare </h5>
-						<p>
-						2017 Mega-Tin Mega Pack
-						</p>
-					</div>
-					<div class="span4 alignR">
-					<form class="form-horizontal qtyFrm">
-						<h3> S/.2.00</h3>
-						<input type="number" class="span4" value="1" style="text-align: center;"><br><br>
-						<div class="btn-group">
-							<a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Añadir al carrito</a>	
-						  	<a href="product_details.html" class="shopBtn">VER</a>
+					<!---footer--->
+					<!--copy-->
+					<div class="copy-section">
+						<div class="container">
+							<div class="copy-left">
+								<p>&copy; 2016 New Shop . All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+							</div>
+							<div class="copy-right">
+								<img src="images/card.png" alt=""/>
+							</div>
+							<div class="clearfix"></div>
 						</div>
-					</form>
 					</div>
-				</div>
-				<hr class="soft">
-				<div class="row-fluid">	  
-					<div class="span2">
-						<img src="assets/img/yugioh-cards/elder-entity-ntss.png" alt="">
-					</div>
-					<div class="span6">
-						<h5>CT14-EN009 Elder Entity N’tss - Super Rare </h5>
-						<p>
-						2017 Mega-Tin Mega Pack
-						</p>
-					</div>
-					<div class="span4 alignR">
-					<form class="form-horizontal qtyFrm">
-						<h3> S/.2.00</h3>
-						<input type="number" class="span4" value="1" style="text-align: center;"><br><br>
-						<div class="btn-group">
-							<a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Añadir al carrito</a>	
-						  	<a href="product_details.html" class="shopBtn">VER</a>
-						</div>
-					</form>
-					</div>
-				</div>
-				<hr class="soft">
-				<div class="row-fluid">	  
-					<div class="span2">
-						<img src="assets/img/yugioh-cards/dark-magician.png" alt="">
-					</div>
-					<div class="span6">
-						<h5>CT14-EN001 Dark Magician - Secret Rare </h5>
-						<p>
-						2017 Mega-Tin Mega Pack
-						</p>
-					</div>
-					<div class="span4 alignR">
-					<form class="form-horizontal qtyFrm">
-						<h3> S/.15.00</h3>
-						<input type="number" class="span4" value="1" style="text-align: center;"><br><br>
-						<div class="btn-group">
-							<a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Añadir al carrito</a>	
-						  	<a href="product_details.html" class="shopBtn">VER</a>
-						</div>
-					</form>
-					</div>
-				</div>
-				<hr class="soft">
-				<div class="row-fluid">	  
-					<div class="span2">
-						<img src="assets/img/yugioh-cards/blue-eyes-white-dragon.png" alt="">
-					</div>
-					<div class="span6">
-						<h5>CT14-EN002 Blue-Eyes White Dragon - Secret Rare </h5>
-						<p>
-						2017 Mega-Tin Mega Pack
-						</p>
-					</div>
-					<div class="span4 alignR">
-					<form class="form-horizontal qtyFrm">
-						<h3> S/.15.00</h3>
-						<input type="number" class="span4" value="1" style="text-align: center;"><br><br>
-						<div class="btn-group">
-							<a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Añadir al carrito</a>	
-						  	<a href="product_details.html" class="shopBtn">VER</a>
-						</div>
-					</form>
-					</div>
-				</div>
-			</div>
-              <div class="tab-pane fade" id="cat1">
-                <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
-              <br>
-              <br>
-			  <div class="row-fluid">	  
-					<div class="span2">
-						<img src="assets/img/b.jpg" alt="">
-					</div>
-					<div class="span6">
-						<h5>Product Name </h5>
-						<p>
-						Nowadays the lingerie industry is one of the most successful business spheres.
-						We always stay in touch with the latest fashion tendencies - 
-						that is why our goods are so popular..
-						</p>
-					</div>
-					<div class="span4 alignR">
-					<form class="form-horizontal qtyFrm">
-					<h3> $140.00</h3>
-					<label class="checkbox">
-						<input type="checkbox">  Adds product to compair
-					</label><br>
-					<div class="btn-group">
-					  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-					  <a href="product_details.html" class="shopBtn">VIEW</a>
-					 </div>
-						</form>
-					</div>
-			</div>
-			<hr class="soften"/>
-			<div class="row-fluid">	  
-					<div class="span2">
-						<img src="assets/img/a.jpg" alt="">
-					</div>
-					<div class="span6">
-						<h5>Product Name </h5>
-						<p>
-						Nowadays the lingerie industry is one of the most successful business spheres.
-						We always stay in touch with the latest fashion tendencies - 
-						that is why our goods are so popular..
-						</p>
-					</div>
-					<div class="span4 alignR">
-					<form class="form-horizontal qtyFrm">
-					<h3> $140.00</h3>
-					<label class="checkbox">
-						<input type="checkbox">  Adds product to compair
-					</label><br>
-					<div class="btn-group">
-					  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-					  <a href="product_details.html" class="shopBtn">VIEW</a>
-					 </div>
-						</form>
-					</div>
-			</div>
-			<hr class="soften"/>
-			  </div>
-              <div class="tab-pane fade" id="cat2">
-                
-				<div class="row-fluid">	  
-					<div class="span2">
-						<img src="assets/img/d.jpg" alt="">
-					</div>
-					<div class="span6">
-						<h5>Product Name </h5>
-						<p>
-						Nowadays the lingerie industry is one of the most successful business spheres.
-						We always stay in touch with the latest fashion tendencies - 
-						that is why our goods are so popular..
-						</p>
-					</div>
-					<div class="span4 alignR">
-					<form class="form-horizontal qtyFrm">
-					<h3> $140.00</h3>
-					<label class="checkbox">
-						<input type="checkbox">  Adds product to compair
-					</label><br>
-					<div class="btn-group">
-					  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-					  <a href="product_details.html" class="shopBtn">VIEW</a>
-					 </div>
-						</form>
-					</div>
-			</div>
-			<hr class="soften"/>
-			<div class="row-fluid">	  
-					<div class="span2">
-						<img src="assets/img/d.jpg" alt="">
-					</div>
-					<div class="span6">
-						<h5>Product Name </h5>
-						<p>
-						Nowadays the lingerie industry is one of the most successful business spheres.
-						We always stay in touch with the latest fashion tendencies - 
-						that is why our goods are so popular..
-						</p>
-					</div>
-					<div class="span4 alignR">
-					<form class="form-horizontal qtyFrm">
-					<h3> $140.00</h3>
-					<label class="checkbox">
-						<input type="checkbox">  Adds product to compair
-					</label><br>
-					<div class="btn-group">
-					  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-					  <a href="product_details.html" class="shopBtn">VIEW</a>
-					 </div>
-						</form>
-					</div>
-			</div>
-			<hr class="soften"/>
-			<div class="row-fluid">	  
-					<div class="span2">
-						<img src="assets/img/d.jpg" alt="">
-					</div>
-					<div class="span6">
-						<h5>Product Name </h5>
-						<p>
-						Nowadays the lingerie industry is one of the most successful business spheres.
-						We always stay in touch with the latest fashion tendencies - 
-						that is why our goods are so popular..
-						</p>
-					</div>
-					<div class="span4 alignR">
-					<form class="form-horizontal qtyFrm">
-					<h3> $140.00</h3>
-					<label class="checkbox">
-						<input type="checkbox">  Adds product to compair
-					</label><br>
-					<div class="btn-group">
-					  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-					  <a href="product_details.html" class="shopBtn">VIEW</a>
-					 </div>
-						</form>
-					</div>
-			</div>
-			<hr class="soften"/>
-			<div class="row-fluid">	  
-					<div class="span2">
-						<img src="assets/img/d.jpg" alt="">
-					</div>
-					<div class="span6">
-						<h5>Product Name </h5>
-						<p>
-						Nowadays the lingerie industry is one of the most successful business spheres.
-						We always stay in touch with the latest fashion tendencies - 
-						that is why our goods are so popular..
-						</p>
-					</div>
-					<div class="span4 alignR">
-					<form class="form-horizontal qtyFrm">
-					<h3> $140.00</h3>
-					<label class="checkbox">
-						<input type="checkbox">  Adds product to compair
-					</label><br>
-					<div class="btn-group">
-					  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-					  <a href="product_details.html" class="shopBtn">VIEW</a>
-					 </div>
-						</form>
-					</div>
-			</div>
-			<hr class="soften"/>
-			
-				</div>
-            </div>
-
-</div>
-</div>
-</div> <!-- Body wrapper -->
-<!-- 
-Clients 
--->
-<section class="our_client">
-	<hr class="soften"/>
-	<h4 class="title cntr"><span class="text">Manufactures</span></h4>
-	<hr class="soften"/>
-	<div class="row">
-		<div class="span2">
-			<a href="#"><img alt="" src="assets/img/1.png"></a>
-		</div>
-		<div class="span2">
-			<a href="#"><img alt="" src="assets/img/2.png"></a>
-		</div>
-		<div class="span2">
-			<a href="#"><img alt="" src="assets/img/3.png"></a>
-		</div>
-		<div class="span2">
-			<a href="#"><img alt="" src="assets/img/4.png"></a>
-		</div>
-		<div class="span2">
-			<a href="#"><img alt="" src="assets/img/5.png"></a>
-		</div>
-		<div class="span2">
-			<a href="#"><img alt="" src="assets/img/6.png"></a>
-		</div>
-	</div>
-</section>
-
-<!--
-Footer
--->
-<footer class="footer">
-<div class="row-fluid">
-<div class="span2">
-<h5>Your Account</h5>
-<a href="#">YOUR ACCOUNT</a><br>
-<a href="#">PERSONAL INFORMATION</a><br>
-<a href="#">ADDRESSES</a><br>
-<a href="#">DISCOUNT</a><br>
-<a href="#">ORDER HISTORY</a><br>
- </div>
-<div class="span2">
-<h5>Iinformation</h5>
-<a href="contact.html">CONTACT</a><br>
-<a href="#">SITEMAP</a><br>
-<a href="#">LEGAL NOTICE</a><br>
-<a href="#">TERMS AND CONDITIONS</a><br>
-<a href="#">ABOUT US</a><br>
- </div>
-<div class="span2">
-<h5>Our Offer</h5>
-<a href="#">NEW PRODUCTS</a> <br>
-<a href="#">TOP SELLERS</a><br>
-<a href="#">SPECIALS</a><br>
-<a href="#">MANUFACTURERS</a><br>
-<a href="#">SUPPLIERS</a> <br/>
- </div>
- <div class="span6">
-<h5>The standard chunk of Lorem</h5>
-The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for
- those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et 
- Malorum" by Cicero are also reproduced in their exact original form, 
-accompanied by English versions from the 1914 translation by H. Rackham.
- </div>
- </div>
-</footer>
-</div><!-- /container -->
-
-<div class="copyright">
-<div class="container">
-	<p class="pull-right">
-		<a href="#"><img src="assets/img/maestro.png" alt="payment"></a>
-		<a href="#"><img src="assets/img/mc.png" alt="payment"></a>
-		<a href="#"><img src="assets/img/pp.png" alt="payment"></a>
-		<a href="#"><img src="assets/img/visa.png" alt="payment"></a>
-		<a href="#"><img src="assets/img/disc.png" alt="payment"></a>
-	</p>
-	<span>Copyright &copy; 2013<br> bootstrap ecommerce shopping template</span>
-</div>
-</div>
-
-    <script src="/js/jquery.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/jquery.easing-1.3.min.js"></script>
-    <script src="/js/jquery.scrollTo-1.4.3.1-min.js"></script>
-    <script src="/js/shop.js"></script>
-    <script type='text/javascript'>
-	  var product =<%-JSON.stringify(product)%>
-	  
-	</script>
-  </body>
+				<!--copy-->
+				
+</body>
 </html>

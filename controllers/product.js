@@ -74,14 +74,14 @@ function saveProduct(req, res){
 	rarity = rarity.replace(/ /g, '-');
 	product.tag = code + '-' + name + '-' + rarity;
 
-	if(product.state == 'NEW') product.backImage = "img/yugioh/card-back.png"
+	if(product.state == 'NEW') product.backImage = "images/yugioh/card-back.png"
 
 	var s_code = product.code.split("-");
 
 	let frontImage = req.files.frontImage;
 
 
-	var dir = appDir + '/public/img/yugioh/' + s_code[0] + "/"
+	var dir = appDir + '/public/images/yugioh/' + s_code[0] + "/"
 
 	if (!fs.existsSync(dir)){
 	    fs.mkdirSync(dir);
@@ -97,7 +97,7 @@ function saveProduct(req, res){
     	if (err)
       		return res.status(500).send(err);
 
-      	product.frontImage = 'img/yugioh/' + s_code[0] + '/' +  frontImageName
+      	product.frontImage = 'images/yugioh/' + s_code[0] + '/' +  frontImageName
 
       	product.save((err, productStored) => {
 			if(err) res.status(500).send(`Error al guardar campo ${err}`);
