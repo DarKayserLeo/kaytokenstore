@@ -48,6 +48,17 @@ function getLastProducts(req, res){ //esto lo estoy llamando directo en el index
 	});
 }
 
+
+//la siguiente query me base en https://stackoverflow.com/questions/38365414/how-to-find-similarity-in-document-field-mongodb
+
+function searchProduct(req, res){
+	var searchText = req.query.search;
+	Product.find({$text: {$search: searchText}}, {score: {$meta: 'textScore'}}).sort({score: {$meta: 'textScore'}}).exec((err, products) => {
+		//res.status(200).send({products})
+		res.render('products', {products, searchText});
+	});
+}
+
 function saveProduct(req, res){
 	//console.log(req.files);
 	if (!req.files)
@@ -137,6 +148,7 @@ module.exports = {
 	getProduct,
 	getProducts,
 	getLastProducts,
+	searchProduct,
 	saveProduct,
 	updateProduct,
 	deleteProduct

@@ -7,6 +7,7 @@ const app = express(); //para crear nuestro servidor, configuracion de la app
 const api = require('./routes') //como el fichero dentro es index.js no hace falta incluirlo
 
 const Product = require('./models/product');
+const ProductController = require('./controllers/product')
 
 //configuracion
 app.use(bodyParser.urlencoded({extended: false}));
@@ -40,6 +41,8 @@ app.get('/product/:productId', function(req, res){
 		res.render('product_details', {product}); 
 	})
 })
+
+app.get('/products', ProductController.searchProduct);
 
 app.get('/darkayserleo', function(req, res){
 	res.render('new_product')

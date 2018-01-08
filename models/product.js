@@ -19,5 +19,7 @@ const ProductSchema = Schema({
 	created: { type: Date, default: Date.now }
 });
 
+ProductSchema.index({tag: 'text'});
+
 //para exportar el modelo
 module.exports = mongoose.model('Product', ProductSchema); //de este modo desde el resto de la aplicacion se accedera a este modelo, siempre y cuando lo importemos
