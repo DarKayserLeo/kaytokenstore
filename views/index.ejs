@@ -18,8 +18,20 @@
 				<div class="top-right">
 				<ul>
 					<li><a href="checkout.html">Checkout</a></li>
-					<li><a href="login.html">Login</a></li>
-					<li><a href="registered.html"> Crear Cuenta </a></li>
+					<li>
+						<%if(typeof username == 'undefined'){%>
+							<a href="/register"> Crear Cuenta </a> 
+						<%} else {%>
+							<a href="/myaccount"> <%=username %> </a>
+						<%}%>
+					</li>
+					<li>
+						<%if(typeof username == 'undefined'){%>
+							<a href="/login">Ingresar</a>
+						<%} else{%>
+							<a href="/logout">Salir</a>
+						<%}%>
+					</li>
 				</ul>
 				</div>
 				<div class="clearfix"></div>

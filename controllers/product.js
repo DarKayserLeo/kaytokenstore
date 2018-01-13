@@ -1,6 +1,7 @@
 'use strict'
 
 const Product = require('../models/product');
+const jwt = require('jsonwebtoken')
 const path = require('path');
 const fs = require('fs');
 const appDir = path.dirname(require.main.filename);
@@ -54,6 +55,28 @@ function getLastProducts(req, res){ //esto lo estoy llamando directo en el index
 function searchProduct(req, res){
 	var searchText = req.query.search;
 	Product.find({$text: {$search: searchText}}, {score: {$meta: 'textScore'}}).sort({score: {$meta: 'textScore'}}).exec((err, products) => {
+		var rc = req.headers.cookie
+		if(rc){
+			var cookies = rc.split(';')
+			for(var i = 0; i < cookies.length; i++){
+				var cookie = cookies[i].trim() 
+				var parts = cookie.split('=')
+				if(parts[0].localeCompare('auth') == 0){ //si es la cookie auth entra, auth es el token
+					var token = parts[1]
+
+					return new Promise(function (resolve, reject) {
+						jwt.verify(token, 'stardust_dragon', function(err, decoded){
+							if(err){
+								res.render('products', {products, searchText})			
+							}else{
+								var username = decoded.username
+								res.render('products', {products, searchText, username})		
+							}
+						});
+					})
+				}
+			}
+		}
 		//res.status(200).send({products})
 		res.render('products', {products, searchText});
 	});

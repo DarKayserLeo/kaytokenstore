@@ -4,12 +4,18 @@
 //npm i -S mongoose
 //npm install --save express-fileupload
 //npm install file-system --save
+//npm install jsonwebtoken --save 
+//npm install express-jwt --save
+//npm install cookie-parser --save
+//npm install --save js-cookie-remove-all //quitar esta no sirve
 
 'use strict'
 
+const http = require('http');
 const mongoose = require('mongoose')
 const app = require('./app')
 const config = require('./config')
+var server  = require('http').createServer(app);
 
 //para la conexion a la base de datos
 mongoose.connect(config.db, (err, res)=>{
@@ -18,9 +24,19 @@ mongoose.connect(config.db, (err, res)=>{
 	}
 	console.log('Conexión a la base de datos establecida');
 
+	server.listen(config.port, () =>{
+		console.log(`API REST corriendo en http://localhost:${config.port}`);
+	});
+	/*
+	http.createServer(app).listen(config.port, ()=>{
+		console.log(`API REST corriendo en http://localhost:${config.port}`);
+	});
+	*/
+	/*
 	app.listen(config.port, () =>{
 		console.log(`API REST corriendo en http://localhost:${config.port}`);
 	});
+	*/
 });
 
 /*

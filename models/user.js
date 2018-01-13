@@ -10,6 +10,17 @@ const bcrypt =  require('bcrypt-nodejs')//debemos encriptar la constraseña para
 const crypto = require('crypto')
 
 const UserSchema = new Schema({
+	username: {type: String, unique: true},
+	email: {type: String, unique: true, lowercase: true},
+	password: String,
+	admin: {type: Boolean, default: false}
+})
+
+
+
+
+/*
+const UserSchema = new Schema({
 	email: {type: String, unique: true, lowercase: true},
 	displayName: String,
 	avatar: String,
@@ -41,5 +52,7 @@ UserSchema.methods.gravatar = function(){
 	const md5 = crypto.createHash('md5').update(this.email).digest('hex') //lo devuelve en formato hexadecimal
 	return `https://gravatar.com/avatar/${md5}?=2006d=retro`
 }
+
+*/
 
 module.exports = mongoose.model('User', UserSchema)

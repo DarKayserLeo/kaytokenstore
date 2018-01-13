@@ -7,6 +7,7 @@ const ProductController = require('../controllers/product')
 const UserController = require('../controllers/user')
 const auth = require('../middlewares/auth')
 const api = express.Router() 
+
 api.use(fileUpload()); //indicamos que use fileupload
 
 api.get('/products', ProductController.getProducts);
@@ -19,9 +20,12 @@ api.delete('/product/:productId', ProductController.deleteProduct); //Eliminar
 
 api.post('/signup', UserController.signUp)
 api.post('/signin', UserController.signIn)
-api.get('/private', auth, (req, res) => { 
+
+
+api.get('/private', auth.authMiddleware, (req, res) => { 
 	res.status(200).send({message: 'Tienes acceso'})
 })
+
 
 module.exports = api
 
