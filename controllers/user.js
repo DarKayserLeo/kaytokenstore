@@ -38,7 +38,7 @@ function signUp(req, res){
 function signIn(req, res){
 	const {username, password} = req.body
 	const secret = req.app.get('jwt-secret')
-
+	
 	User.findOne({username: username}, function(err, user){
         if(err) {
           console.log(err);
@@ -69,8 +69,7 @@ function signIn(req, res){
             res.render('login', {message})
         }
         //res.json({message: message});
-    });
-
+    });	
 }
 
 

@@ -70,11 +70,65 @@ app.post('/login', UserController.signIn)
 //login end
 
 app.get('/login', function(req, res){
-	res.render('login')
+	var rc = req.headers.cookie
+	if(rc){
+		console.log("SDSDSDDS")
+		console.log("---------")
+		var cookies = rc.split(';')
+		for(var i = 0; i < cookies.length; i++){
+			var cookie = cookies[i].trim() 
+			var parts = cookie.split('=')
+			if(parts[0].localeCompare('auth') == 0){ //si es la cookie auth entra, auth es el token
+				var token = parts[1]
+				console.log("---------")
+				console.log(token)
+				return new Promise(function (resolve, reject) {
+					jwt.verify(token, 'stardust_dragon', function(err, decoded){
+						console.log("=========")
+						if(err){
+							res.redirect('/login')			
+						}else{
+							var username = decoded.username
+							res.redirect('/')		
+						}
+					});
+				})
+			}
+		}
+	}else{
+		res.render('login')
+	}
 })
 
 app.get('/register', function(req, res){
-	res.render('register')
+	var rc = req.headers.cookie
+	if(rc){
+		console.log("SDSDSDDS")
+		console.log("---------")
+		var cookies = rc.split(';')
+		for(var i = 0; i < cookies.length; i++){
+			var cookie = cookies[i].trim() 
+			var parts = cookie.split('=')
+			if(parts[0].localeCompare('auth') == 0){ //si es la cookie auth entra, auth es el token
+				var token = parts[1]
+				console.log("---------")
+				console.log(token)
+				return new Promise(function (resolve, reject) {
+					jwt.verify(token, 'stardust_dragon', function(err, decoded){
+						console.log("=========")
+						if(err){
+							res.redirect('/register')			
+						}else{
+							var username = decoded.username
+							res.redirect('/')		
+						}
+					});
+				})
+			}
+		}
+	}else{
+		res.render('register')
+	}
 })
 
 app.get('/logout', function(req, res){
