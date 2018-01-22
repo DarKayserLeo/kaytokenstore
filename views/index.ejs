@@ -252,13 +252,18 @@
 
 									<span class="size"> <%= product.rarity %> </span>
 									<p ><!--<del>$100.00</del>--><em class="item_price">S/.<%= product.price.toFixed(2) %></em></p>
-									<select class="selectpicker select-stock">
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-									</select>
-									<a href="#" data-text="Add To Cart" class="my-cart-b item_add">Añadir al Carrito</a>
+									<form action="/cart" method="post" id="<%= product.tag %>">
+										<select class="selectpicker select-stock" name="qty">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+										</select>
+										<input type="hidden" name="nonce" value="<%= nonce %>">
+									</form>
+									<!--<a href="#" data-text="Add To Cart" class="my-cart-b item_add">Añadir al Carrito</a>-->
+									<button type="submit" form="<%= product.tag %>" value="Submit" class="my-cart-b item_add">Añadir al carrito</button>
+									
 								</div>
 							</div>
 						</div>

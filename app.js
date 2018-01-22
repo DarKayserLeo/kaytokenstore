@@ -1,9 +1,13 @@
 'use strict'
 
+const config = require('./config')
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
+const session = require('express-session');
+const MongoStore = require('connect-mongodb-session')(session);
 
 const app = express(); //para crear nuestro servidor, configuracion de la app
 const api = require('./routes') //como el fichero dentro es index.js no hace falta incluirlo
@@ -14,6 +18,9 @@ const ProductController = require('./controllers/product')
 const User = require('./models/user');
 const UserController = require('./controllers/user')
 
+const Cart = require('./lib/Cart');
+const Security = require('./lib/Security');
+
 //configuracion
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json())
@@ -22,6 +29,20 @@ app.use(cookieParser())
 
 app.set('view engine', 'ejs') //EJS
 app.use(express.static(__dirname + '/public'));
+
+let store = new MongoStore({
+    uri: config.db,
+    collection: 'sessions'
+});
+
+app.use(session({
+  secret: 'secret session key',
+  resave: false,
+  saveUninitialized: true,
+  store: store,
+  unset: 'destroy',
+  name: 'session cookie name'
+}));
 
 app.get('/', function(req, res){ //este es el render de mi index 
 	//por lo visto todo anidado 
@@ -55,7 +76,10 @@ app.get('/', function(req, res){ //este es el render de mi index
 				}
 			}
 		}
-		res.render('index', {new_products})
+		console.log("=====================")
+		console.log(req.sessionID + req.headers['user-agent'])
+		console.log("=====================")
+		res.render('index', {new_products, nonce: Security.md5(req.sessionID + req.headers['user-agent'])})
 	});
 
 	
@@ -174,6 +198,24 @@ app.get('/product/:productId', function(req, res){
 })
 
 app.get('/products', ProductController.searchProduct);
+
+app.post('/cart', (req, res) => {
+	let qty = parseInt(req.body.qty, 10);
+    let tag = "sdy-004-summoned-skull-common";
+    console.log("--> " + req.body.nonce)
+    if(qty > 0 && Security.isValidNonce(req.body.nonce, req)) {
+        Product.findOne({'tag': tag}).then(product => {
+            Cart.addToCart(product, qty);
+            Cart.saveCart(req);
+            console.log("entreee")
+            res.redirect('/');
+        }).catch(err => {
+           res.redirect('/');
+        });
+    } else {
+        res.redirect('/');
+    }
+})
 
 app.get('/darkayserleo', function(req, res){
 	res.render('new_product')

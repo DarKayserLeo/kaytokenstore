@@ -8,6 +8,8 @@
 //npm install express-jwt --save
 //npm install cookie-parser --save
 //npm install --save js-cookie-remove-all //quitar esta no sirve
+//npm install express-session --save
+//npm install connect-mongodb-session --save
 
 'use strict'
 
