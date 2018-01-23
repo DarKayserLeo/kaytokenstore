@@ -79,7 +79,9 @@ app.get('/', function(req, res){ //este es el render de mi index
 		console.log("=====================")
 		console.log(req.sessionID + req.headers['user-agent'])
 		console.log("=====================")
-		res.render('index', {new_products, nonce: Security.md5(req.sessionID + req.headers['user-agent'])})
+		let session = req.session
+		let cart = (typeof session.cart !== 'undefined') ? session.cart : false;
+		res.render('index', {new_products, nonce: Security.md5(req.sessionID + req.headers['user-agent']), cart: cart})
 	});
 
 	
@@ -201,15 +203,19 @@ app.get('/products', ProductController.searchProduct);
 
 app.post('/cart', (req, res) => {
 	let qty = parseInt(req.body.qty, 10);
-    let tag = "sdy-004-summoned-skull-common";
+    let tag = req.body.tag;
     console.log("--> " + req.body.nonce)
+    console.log(tag)
     if(qty > 0 && Security.isValidNonce(req.body.nonce, req)) {
         Product.findOne({'tag': tag}).then(product => {
-            Cart.addToCart(product, qty);
+            let session = req.session;
+            var oldCart = session.cart;
+            Cart.addToCart(product, qty, oldCart);
             Cart.saveCart(req);
             console.log("entreee")
             res.redirect('/');
         }).catch(err => {
+        	console.log(err)
            res.redirect('/');
         });
     } else {

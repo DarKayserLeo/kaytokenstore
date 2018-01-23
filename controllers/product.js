@@ -6,6 +6,9 @@ const path = require('path');
 const fs = require('fs');
 const appDir = path.dirname(require.main.filename);
 
+const Cart = require('../lib/Cart');
+const Security = require('../lib/Security');
+
 function getProduct(req, res){
 	let productId = req.params.productId;
 
@@ -78,7 +81,9 @@ function searchProduct(req, res){
 			}
 		}
 		//res.status(200).send({products})
-		res.render('products', {products, searchText});
+		let session = req.session
+		let cart = (typeof session.cart !== 'undefined') ? session.cart : false;
+		res.render('products', {products, searchText, nonce: Security.md5(req.sessionID + req.headers['user-agent']), cart: cart});
 	});
 }
 
