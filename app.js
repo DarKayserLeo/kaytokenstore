@@ -80,7 +80,7 @@ app.get('/', function(req, res){ //este es el render de mi index
 		console.log(req.sessionID + req.headers['user-agent'])
 		console.log("=====================")
 		let session = req.session
-		let cart = (typeof session.cart !== 'undefined') ? session.cart : false;
+		let cart = (typeof session.cart !== 'undefined') ? session.cart : {'items': {}, 'totalQty': 0, 'totalPrice': 0};
 		res.render('index', {new_products, nonce: Security.md5(req.sessionID + req.headers['user-agent']), cart: cart})
 	});
 
@@ -210,8 +210,9 @@ app.post('/cart', (req, res) => {
         Product.findOne({'tag': tag}).then(product => {
             let session = req.session;
             var oldCart = session.cart;
-            Cart.addToCart(product, qty, oldCart);
-            Cart.saveCart(req);
+            var cart = new Cart(req.session.cart ? req.session.cart : {})
+            cart.add(product, product.id)
+            req.session.cart = cart;
             console.log("entreee")
             res.redirect('/');
         }).catch(err => {
