@@ -195,7 +195,9 @@ app.get('/product/:productId', function(req, res){
 			}
 		}
 		//res.status(200).send({product: product})
-		res.render('product_details', {product}); 
+		let session = req.session
+		let cart = (typeof session.cart !== 'undefined') ? session.cart : {'items': {}, 'totalQty': 0, 'totalPrice': 0};
+		res.render('product_details', {product, nonce: Security.md5(req.sessionID + req.headers['user-agent']), cart: cart}); 
 	})
 })
 
@@ -211,10 +213,10 @@ app.post('/cart', (req, res) => {
             let session = req.session;
             var oldCart = session.cart;
             var cart = new Cart(req.session.cart ? req.session.cart : {})
-            cart.add(product, product.id)
+            cart.add(product, product.id, qty)
             req.session.cart = cart;
             console.log("entreee")
-            res.redirect('/');
+            res.redirect('back');
         }).catch(err => {
         	console.log(err)
            res.redirect('/');

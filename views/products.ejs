@@ -145,7 +145,7 @@
 						<div class="cart box_1">
 							<a href="checkout.html">
 								<h3> <div class="total">
-									S/.<%= if(cart.totals != undefined) cart.totals.toFixed(2) else  "0" %> (<%= cart.quantity %> productos)</div>
+									S/.<% if(cart){%> <%=cart.totalPrice.toFixed(2)%> <%}else{%> <%= "0.00" %> <%}%> (<%= cart.totalQty %> productos)</div>
 									<img src="images/bag.png" alt="" />
 								</h3>
 							</a>
