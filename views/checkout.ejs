@@ -200,87 +200,39 @@
 	
 	<!--content-->
 	<div class="content">
-		<!--new-arrivals-->
-		<div class="new-arrivals-w3agile">
+		<div class="cart-items">
 			<div class="container">
-				<h2 class="tittle">Resultados de la Búsqueda: "<%= searchText %>"</h2>
-				<div id="myTabContent" class="tab-content">
-					<div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
-						<%var count = 0;
-						if(products.length == 0){%>
-							<br>	
-							<h1>No se encontraron coincidencias</h1>
-						<%}%>  
-						<%products.forEach(function(product){
-							if(count == 0){%>
-								<div class="product-tab prod1">
-							<%}%>
-						<div class="col-md-3 cap-left simpleCart_shelfItem">
-							<div class="grid-arr">
-								<div  class="grid-arrival">
-									<figure>		
-										<a href=<%= "/product/" + product.tag %>>
-											<div class="grid-img">
-												<img  src=<%= "../" + product.frontImage %> class="img_responsive" alt="">
-											</div>
-											<!--
-											<div class="grid-img">
-												<img  src="images/p19.jpg" class="img-responsive"  alt="">
-											</div>
-											-->			
-										</a>		
-									</figure>	
-								</div>
-								<!--
-								<div class="ribben">
-									<p>-20%</p>
-								</div>
-								-->
-								<!--
-								<div class="block">
-									<div class="starbox small ghosting"> </div>
-								</div>
-								-->
-								<div class="women">
-									<% var productName = product.code + " " + product.name %>
-									<% if(productName.length <= 32){%>
-									<h6><a class="product-name-1" href=<%= "/product/" + product.tag %> ><%= productName %></a></h6>
-									<%} else{%>
-										<h6><a class="product-name-2" href=<%= "/product/" + product.tag %>><%= productName %></a></h6>	
-									<%}%>
-
-									<span class="size"> <%= product.rarity %> </span>
-									<p ><!--<del>$100.00</del>--><em class="item_price">S/.<%= product.price.toFixed(2) %></em></p>
-									<form action="/cart" method="post" id="<%= product.tag %>">
-										<select class="selectpicker select-stock" name="qty">
-											<% for(var i = 1; i < product.stock+1; i++){%>
-												<option value="<%= i %>"><%= i %></option>	
-											<%}%>
-											
-										</select>
-										<input type="hidden" name="tag" value="<%= product.tag %>">
-										<input type="hidden" name="nonce" value="<%= nonce %>">
-									</form>
-									<!--<a href="#" data-text="Add To Cart" class="my-cart-b item_add">Añadir al Carrito</a>-->
-									<button type="submit" form="<%= product.tag %>" value="Submit" class="my-cart-b item_add">Añadir al carrito</button>
-								</div>
-							</div>
+				<h2>Mi Carrito de Compras (<%= cart.totalQty %>)</h2>
+				<% products = cart.items %>
+				<% Object.keys(products).forEach(function(key){
+				var product = products[key].item 
+				var qty = products[key].qty %>
+				<div class="cart-header">
+					<div class="close1"> </div>
+					<div class="cart-sec simpleCart_shelfItem">
+						<div class="cart-item cyc">
+							<img  src=<%= "../" + product.frontImage %> class="img-responsive" alt="">
 						</div>
-						<%count++;
-						if(count == 4){ count= 0; %>
-							<div class="clearfix"></div>
-							</div>
-						<%}%>
-						<%});%>
-						<%if(count > 0 && count < 4){%>
-							<div class="clearfix"></div>
-							</div>
-						<%}%>		
+						<div class="cart-item-info">
+							<h3><a href="#"> <%= product.code + " " + product.name %> </a><span>Pickup time:</span></h3>
+							<p>Cantidad: <%= qty %></p>
+							<ul class="qty">
+								<li><p>Min. order value:</p></li>
+								<li><p>FREE delivery</p></li>
+							</ul>
+							<div class="delivery">
+								<p>Service Charges : $10.00</p>
+								<span>Delivered in 1-1:30 hours</span>
+								<div class="clearfix"></div>
+							</div>	
+						</div>
+						<div class="clearfix"></div>
 					</div>
+				<%})%>	
 				</div>
-			</div>
+			</div>	
 		</div>
-		<!--new-arrivals-->
+	</div>
 	<!--content-->
 	
 	<!--footer-->

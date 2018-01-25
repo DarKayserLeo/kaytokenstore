@@ -226,6 +226,12 @@ app.post('/cart', (req, res) => {
     }
 })
 
+app.get('/checkout', function(req, res){
+	let session = req.session
+	let cart = (typeof session.cart !== 'undefined') ? session.cart : {'items': {}, 'totalQty': 0, 'totalPrice': 0};
+	res.render('checkout',{cart: cart})
+})
+
 app.get('/darkayserleo', function(req, res){
 	res.render('new_product')
 })

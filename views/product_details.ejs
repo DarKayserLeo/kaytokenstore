@@ -84,7 +84,7 @@ $(window).load(function() {
 				<div class="container">
 					<div class="top-right">
 					<ul>
-						<li><a href="checkout.html">Checkout</a></li>
+						<li><a href="/checkout">Checkout</a></li>
 						<li>
 						<%if(typeof username == 'undefined'){%>
 							<a href="/register"> Crear Cuenta </a> 
@@ -215,7 +215,7 @@ $(window).load(function() {
 						</div>
 						<div class="header-right2">
 							<div class="cart box_1">
-								<a href="checkout.html">
+								<a href="/checkout">
 									<h3> <div class="total">
 										S/.<% if(cart){%> <%=cart.totalPrice.toFixed(2)%> <%}else{%> <%= "0.00" %> <%}%> (<%= cart.totalQty %> productos)</div>
 										<img src="images/bag.png" alt="" />
@@ -476,7 +476,7 @@ $(window).load(function() {
 								<div class="col-md-3 footer-grid">
 									<h4>My Account</h4>
 									<ul>
-										<li><a href="checkout.html">Checkout</a></li>
+										<li><a href="/checkout">Checkout</a></li>
 										<li><a href="login.html">Login</a></li>
 										<li><a href="registered.html"> Create Account </a></li>
 									</ul>
