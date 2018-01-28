@@ -232,6 +232,18 @@ app.get('/checkout', function(req, res){
 	res.render('checkout',{cart: cart})
 })
 
+app.get('/remove-cart-item/:tag', function(req, res, next){
+	let session = req.session
+	let cart = new Cart(session.cart ? session.cart : {'items': {}, 'totalQty': 0, 'totalPrice': 0});
+	let tag = req.params.tag;
+	Product.findOne({'tag': tag}).then(product => {
+		var id = product.id
+		cart.removeItem(id);
+		req.session.cart = cart;
+		res.redirect('/checkout');
+	})
+})
+
 app.get('/darkayserleo', function(req, res){
 	res.render('new_product')
 })
