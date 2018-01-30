@@ -199,19 +199,24 @@
 	<!--banner-->
 	
 	<!--content-->
-	<div class="content">
+	<div class="content bg-color">
 		<div class="cart-items">
 			<div class="container">
 				<h2>Mi Carrito de Compras (<%= cart.totalQty %>)</h2>
 				<div class="sc">
 					<% products = cart.items %>
-					
 					<% Object.keys(products).forEach(function(key, idx){
 					var productsLength = Object.keys(products).length
 					var product = products[key].item 
-					var qty = products[key].qty %>
+					var qty = products[key].qty 
+					var price = products[key].price %>
 					<div class="cart-header">
-						<a href= <%= "/remove-cart-item/" + product.tag %> class="close1"> </a>
+						<!--<a href= <%= "/remove-cart-item/" + product.tag %> class="close1"> </a>-->
+						<strong><p class="itemTotalPrice">S/.<%= price.toFixed(2) %></p></strong>
+						<% if (idx === 0){ %>
+							<div style="height: 17px"></div>
+						<% } %>
+						
 						<div class="cart-sec simpleCart_shelfItem">
 							<div class="cart-item cyc">
 								<a href= <%= "/product/" + product.tag %> >
@@ -234,6 +239,30 @@
 								</div>
 							</div>
 							<div class="clearfix"></div>
+						</div>
+					</div>
+					<div class="col_100p clearfix">
+						<div class="fr col_100p prltv">
+							<div class="tr">
+								<a class="action actionLink" href= <%= "/remove-cart-item/" + product.tag %> >Eliminar</a>
+								<span class="mr10 ml10 linkClr">|</span>
+								<a class="action actionLink saveLater"  href="">Guardar para después</a>
+								<span class="mr10 ml10 linkClr">|</span>
+								<a class="action item-qty" >
+									Cantidad:
+									<select id=<%= product.tag %> class="selectpicker updateQty" name="qty">
+										<% for(var i = 1; i < product.stock+1; i++){%>
+											<% if(qty == i ){ %>
+												<option value="<%= i %>" selected="selected"><%= i %></option>
+											<%} else { %>
+												<option value="<%= i %>"><%= i %></option>
+											<%}%>
+												
+										<%}%>
+										
+									</select>
+								</a>
+							</div>
 						</div>
 					</div>
 					<% if (idx < productsLength - 1){ %>
@@ -292,6 +321,14 @@
 			
 		</div>
 	</div>
+
+	<script type="text/javascript">
+		$('.updateQty').on('change', function () {
+		    var valueSelected = this.value;
+		    window.location.replace('/update-cart-item/' + this.id + '/' + valueSelected)
+		});
+	</script>
+
 	<!--footer-->			
 </body>
 </html>

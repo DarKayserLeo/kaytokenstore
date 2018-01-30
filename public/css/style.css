@@ -2141,8 +2141,7 @@ h3.account-text{
 }
 
 .cart-sec{
-	
-	margin-bottom:3em;
+	/*margin-bottom:3em;*/ /*modified*/
 }
 .cart-item{
 	width:10%;

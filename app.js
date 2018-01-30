@@ -244,6 +244,19 @@ app.get('/remove-cart-item/:tag', function(req, res, next){
 	})
 })
 
+app.get('/update-cart-item/:tag/:qty', function(req, res, next){
+	let session = req.session
+	let cart = new Cart(session.cart ? session.cart : {'items': {}, 'totalQty': 0, 'totalPrice': 0});
+	let tag = req.params.tag;
+	let qty = req.params.qty;
+	Product.findOne({'tag': tag}).then(product => {
+		var id = product.id
+		cart.update(product, product.id, qty)
+		req.session.cart = cart;
+		res.redirect('/checkout');
+	})	
+})
+
 app.get('/darkayserleo', function(req, res){
 	res.render('new_product')
 })
