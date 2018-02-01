@@ -5,6 +5,9 @@
 <head>
     <% include head %>
 </head>
+
+<% var deliveryCost = 0.00 %>
+
 <body>
 	<!--header-->
 	<div class="header">
@@ -12,7 +15,7 @@
 			<div class="container">
 				<div class="top-right">
 				<ul>
-					<li><a href="/checkout">Checkout</a></li>
+					<li><a href="/shopping-cart">Checkout</a></li>
 					<li>
 						<%if(typeof username == 'undefined'){%>
 							<a href="/register"> Crear Cuenta </a> 
@@ -143,7 +146,7 @@
 					</div>
 					<div class="header-right2">
 						<div class="cart box_1">
-							<a href="/checkout">
+							<a href="/shopping-cart">
 								<h3> <div class="total">
 									S/.<% if(cart){%> <%=cart.totalPrice.toFixed(2)%> <%}else{%> <%= "0.00" %> <%}%> (<%= cart.totalQty %> productos)</div>
 									<img src="images/bag.png" alt="" />
@@ -265,9 +268,67 @@
 							</div>
 						</div>
 					</div>
-					<% if (idx < productsLength - 1){ %>
-						<hr class="dottedLine">
-					<% } %>
+					<hr class="dottedLine">
+					<% if (idx === productsLength - 1){ %>
+						<div class="col_100p clearfix">
+							<div class="fr col_100p prltv">
+								<div class="tr tsts">
+									<table class="fr ralign cartSummaryTable">
+										<tbody>
+											<tr>
+												<td width="320px">
+													<div class="tr">Subtotal (<%= cart.totalQty %> productos):</div>
+												</td>
+												<td>
+													<div class="nowrap tr italic">
+														S/.<%=cart.totalPrice.toFixed(2)%>		
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td width="320px">
+													<div class="tr">
+														<span>Delivery:</span>
+													</div>
+												</td>
+												<td>
+													<div class="tr nowrap italic">S/. <%=deliveryCost.toFixed(2)%></div>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2">
+													<div class="fr col_100p sumSep mt5 lh0 clearfix"></div>
+												</td>
+											</tr>
+											<tr>
+												<td width="320px" class="">
+													<div class="tr fw-b fsz18px blackClr">Total: </div>
+												</td>
+												<td class="nowrap ">
+													<div class="tr fw-b fsz18px blackClr italic" id="asyncTotal">
+														S/.<%= (cart.totalPrice + deliveryCost).toFixed(2) %>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2">
+													<div class="fr col_100p sumSep mt5 lh0 clearfix"></div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="fr col_100p tr mb10 mt10 clearfix">
+										<div class="fr ralign sc-btn">		
+											<a id="ptcBtnBottom" class="btn btn-prim" href="#" target="" role="button">Pagar</a>
+										</div>
+										<div class="fr ralign sc-btn">
+											<a id="contShoppingBtn" class="btn btn-ter" href="/" target="">Seguir comprando</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					<%}%>
 					<%})%>	
 				</div>
 			</div>	
@@ -292,7 +353,7 @@
 				<div class="col-md-3 footer-grid">
 					<h4>My Account</h4>
 					<ul>
-						<li><a href="/checkout">Checkout</a></li>
+						<li><a href="/shopping-cart">Checkout</a></li>
 						<li><a href="login.html">Login</a></li>
 						<li><a href="registered.html"> Create Account </a></li>
 					</ul>

@@ -47,7 +47,7 @@ app.use(session({
 app.get('/', function(req, res){ //este es el render de mi index 
 	//por lo visto todo anidado 
 	let cutoff = new Date(); 
-	cutoff.setDate(cutoff.getDate()-7);
+	cutoff.setDate(cutoff.getDate()-60);
 	//console.log(cutoff)
 	Product.find({'created': {$gte: cutoff}}).limit(20).exec(function(err, new_products){
 		//res.status(200).send({new_products})
@@ -226,10 +226,10 @@ app.post('/cart', (req, res) => {
     }
 })
 
-app.get('/checkout', function(req, res){
+app.get('/shopping-cart', function(req, res){
 	let session = req.session
 	let cart = (typeof session.cart !== 'undefined') ? session.cart : {'items': {}, 'totalQty': 0, 'totalPrice': 0};
-	res.render('checkout',{cart: cart})
+	res.render('shopping-cart',{cart: cart})
 })
 
 app.get('/remove-cart-item/:tag', function(req, res, next){
@@ -240,7 +240,7 @@ app.get('/remove-cart-item/:tag', function(req, res, next){
 		var id = product.id
 		cart.removeItem(id);
 		req.session.cart = cart;
-		res.redirect('/checkout');
+		res.redirect('/shopping-cart');
 	})
 })
 
@@ -253,7 +253,7 @@ app.get('/update-cart-item/:tag/:qty', function(req, res, next){
 		var id = product.id
 		cart.update(product, product.id, qty)
 		req.session.cart = cart;
-		res.redirect('/checkout');
+		res.redirect('/shopping-cart');
 	})	
 })
 
