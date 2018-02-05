@@ -17,6 +17,14 @@
 	color: #1565C0;
 	font-size: 0.75em;
 }
+
+.h2-tittle{
+	padding-bottom: 0.5em;
+	text-align: center;
+    font-size: 3em;
+    color: #1565C0;
+}
+
 /*
 .single-product-img{
 	margin-bottom: 1px;
@@ -342,6 +350,16 @@
 	float: right;
 }
 
+.sc-resume{
+	padding-top: 3.0em;
+}
+
+.sc-item-options{
+	position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
 @media screen and (max-width: 320px){
 	.img_responsive{height: 360px;}
 	.select-stock{
@@ -356,7 +374,7 @@
 	.cart-item{
 		width:20%;
 		float:left;
-		margin-right:5%;	
+		margin-right:5%;
 	}
 	.cart-item-info{
 		width:50%;

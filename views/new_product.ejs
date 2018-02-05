@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  	
+
 </head>
 <body>
 	<form action="/api/save-product" method="post" encType="multipart/form-data">
@@ -14,10 +14,19 @@
 	    	<label for="price">Precio:</label>
 	    	<input type="text" id="price" name="price">
 	  	</div>
+		<br>
+		<div>
+	    	<label for="stock">Cantidad:</label>
+	    	<select name="stock">
+		  		<% for(var i = 1; i < 101; i++){%>
+		  			<option value=<%= ""+ i +"" %>> <%= i %></option>
+		  		<%}%>
+			</select>
+	  	</div>
 	  	<br>	
 	  	<div>
-	    	<label for="state">Estado:</label>
-	    	<select name="state">
+	    	<label for="condition">Estado:</label>
+	    	<select name="condition">
 		  		<option value="NEW">Nuevo</option>
 		  		<option value="USED">Usado</option>
 			</select>
@@ -36,33 +45,288 @@
 		</div>
 		<br>
 		<div>
-	    	<label for="stock">Cantidad:</label>
-	    	<select name="stock">
-		  		<% for(var i = 1; i < 101; i++){%>
-		  			<option value=<%= ""+ i +"" %>> <%= i %></option>
-		  		<%}%>
-			</select>
-	  	</div>
-		<br>
-		<div>
 	    	<label for="code">Codigo:</label>
 	    	<input type="text" id="code" name="code">
 	  	</div>
 		<br>
 		<div>
+			<label for="cardtype">Tipo de carta:</label>
+		    <select id="cardtype" name="cardtype">
+				<option value="MONSTER">Monstruo</option>
+			  	<option value="SPELL">Magica</option>
+			  	<option value="TRAP">Trampa</option>
+			</select>
+		</div>
+		<div id="additional-info">
+			
+		</div>
+		<br>
+		<div>
 	    	<label for="rarity">Rareza:</label>
-	    	<input type="text" id="rarity" name="rarity">
+	    	<select type="text" id="rarity" name="rarity">
+				<option value="COMMON">Común</option>
+				<option value="RARE">Raro</option>
+				<option value="SUPER_RARE">Super Raro</option>
+				<option value="ULTRA_RARE">Ultra Raro</option>
+				<option value="SECRET_RARE">Secret Rare</option>
+			</select>
+	  	</div>
+		<br>
+		<div id="edition-container">
+	    	<label for="edition">Edición:</label>
+	    	<select type="text" id="edition" name="edition">
+				<option value="FIRST_EDITION">Primera Edición</option>
+				<option value="UNLIMITED_EDITION">Edición Ilimitada</option>
+				<option value="LIMITED_EDITION">Edición Limitada</option>
+			</select>
 	  	</div>
 	  	<div>
 	    	<label for="description">Descripción:</label>
-	    	<textarea id="description" name="description"></textarea>
+	    	<textarea id="description" rows=8 cols=80 name="description"></textarea>
 	  	</div>
 	    <br>
-		<input type="file" name="frontImage" id="frontImage" />
+		<input type="file" name="image" id="image" />
 
 	  	<div class="button">
 	    	<button type="submit">Guardar</button>
 	  	</div>
 	</form>
   </body>
+
+  <script src="js/jquery.min.js"></script>
+  <script type="text/javascript">
+  	$("document").ready(function() {
+	        $("#cardtype").trigger('change');
+	});
+
+  	$( "#cardtype" ).change(function() {
+  		var type =  this.value;
+		if(type.localeCompare("MONSTER") == 0){
+			$( "#additional-info" ).html("");
+			var additionalInfo = 
+				"<br>" +
+				"<div>" +
+			    	"<label for='attribute'>Atributo:</label>" +
+			    	"<select type='text' id='attribute' name='attribute'>" +
+						"<option value='DARK'> DARK </option>" +
+						"<option value='DIVINE'> DIVINE </option>" +
+						"<option value='EARTH'> EARTH </option>" +
+						"<option value='FIRE'> FIRE </option>" +
+						"<option value='LIGHT'> LIGHT </option>" +
+						"<option value='WATER'> WATER </option>" +
+						"<option value='WIND'> WIND </option>" + 
+					"</select>" +
+			  	"</div>" +
+				"<br>" +
+				"<div>" +
+			    	"<label for='subtype'>Categoría:</label>" +
+			    	"<select type='text' id='subtype' name='subtype'>" +
+						"<option value='EFFECT_MONSTER'> EFFECT MONSTER </option>" +
+						"<option value='FUSION_MONSTER'> FUSION MONSTER </option>" +
+						"<option value='LINK_MONSTER'> LINK MONSTER </option>" +
+						"<option value='NORMAL_MONSTER'> NORMAL MONSTER </option>" +
+						"<option value='PENDULUM_MONSTER'> PENDULUM MONSTER </option>" +
+						"<option value='RITUAL_MONSTER'> RITUAL MONSTER </option>" +
+						"<option value='SYNCHRO_MONSTER'> SYNCHRO MONSTER </option>" +
+						"<option value='TOKEN_MONSTER'> TOKEN MONSTER </option>" +
+						"<option value='XYZ_MONSTER'> XYZ MONSTER </option>" + 
+					"</select>" +
+			  	"</div>" +
+				"<br>" +
+				"<div>" +
+			    	"<label for='type'>Tipo:</label>" +
+			    	"<select type='text' id='type' name='type'>" +
+						"<option value='AQUA'> Aqua </option>" +
+						"<option value='BEAST'> Beast </option>" +
+						"<option value='BEAST_WARRIOR'> Beast-Warrior </option>" +
+						"<option value='CREATOR_GOD'> Creator God </option>" +
+						"<option value='CYBERSE'> Cyberse </option>" +
+						"<option value='DINOSAUR'> Dinosaur </option>" +
+						"<option value='DIVINE_BEAST'> Divine-Beast </option>" +
+						"<option value='DRAGON'> Dragon </option>" +
+						"<option value='FAIRY'> Fairy </option>" + 
+						"<option value='FIEND'> Fiend </option>" + 
+						"<option value='FISH'> Fish </option>" + 
+						"<option value='INSECT'> Insect </option>" + 
+						"<option value='MACHINE'> Machine </option>" + 
+						"<option value='PLANT'> Plant </option>" +
+						"<option value='PSYCHIC'> Psychic </option>" +
+						"<option value='PYRO'> Pyro </option>" +
+						"<option value='REPTILE'> Reptile </option>" +
+						"<option value='ROCK'> Rock </option>" +  
+						"<option value='SEA_SERPENT'> Sea Serpent </option>" +
+						"<option value='SPELLCASTER'> Spellcaster </option>" +
+						"<option value='THUNDER'> Thunder </option>" +
+						"<option value='WARRIOR'> Warrior </option>" +
+						"<option value='WINGED_BEAST'> Winged Beast </option>" +
+						"<option value='WYRM'> Wyrm </option>" +
+						"<option value='ZOMBIE'> Zombie </option>" +
+					"</select>" +
+			  	"</div>" + 
+				"<br>" + 
+				"<div>" +
+			    	"<label for='ability'>Tipo de Habilidad:</label>" +
+			    	"<select type='text' id='ability' name='ability'>" +
+						"<option value='NONE'> Ninguna </option>" +
+						"<option value='FLIP'> Flip </option>" +
+						"<option value='GEMINI'> Gemini </option>" +
+						"<option value='SPIRIT'> Spirit </option>" +
+						"<option value='TOON'> Toon </option>" +
+						"<option value='TUNER'> Tuner </option>" +
+						"<option value='UNION'> Union </option>" +
+					"</select>" +
+				"</div>" +
+				"<br>" +
+				"<div id='stars'>" + 
+					"<label for='level'>Nivel:</label>" +
+			    		"<select type='number' id='level' name='level'>";
+						for(var i = 1; i <= 12; i++){
+							additionalInfo += 
+							"<option value='" + i + "'>" + i +"</option>";
+						}
+						additionalInfo +=
+						"</select>" +
+					"</label>" +  	
+				"</div>" + 
+				"<br>" +
+				"<div id='atk-container'>" +
+			    	"<label for='atk'>ATK:</label>" +
+			    	"<input type='text' id='atk' name='atk'>" +
+			  	"</div>" + 
+				"<br>" +
+				"<div id='def-container'>" +
+			    	"<label for='def'>DEF:</label>" +
+			    	"<input type='text' id='def' name='def'>" +
+			  	"</div>";
+			$( "#additional-info" ).append(additionalInfo);
+		} else if(type.localeCompare("SPELL") == 0){
+			$( "#additional-info" ).html("");
+			var additionalInfo =
+				"<br>" +
+				"<div>" +
+			    	"<label for='type'>Tipo:</label>" +
+			    	"<select type='text' id='type' name='type'>" +
+						"<option value='CONTINUOUS_SPELL'> Continuous Spell </option>" +
+						"<option value='EQUIP_SPELL'> Equip Spell </option>" +
+						"<option value='FIELD_SPELL'> Field Spell </option>" +
+						"<option value='NORMAL_SPELL'> Normal Spell </option>" +
+						"<option value='QUICK_PLAY_SPELL'> Quick-Play Spell </option>" +
+						"<option value='RITUAL_SPELL'> Ritual Spell </option>" +
+					"</select>" +
+			  	"</div>";
+			$( "#additional-info" ).append(additionalInfo);
+		} else if(type.localeCompare("TRAP") == 0){
+			$( "#additional-info" ).html("");
+			var additionalInfo =
+				"<br>" +
+				"<div>" +
+			    	"<label for='type'>Tipo:</label>" +
+			    	"<select type='text' id='type' name='type'>" +
+						"<option value='CONTINUOUS_TRAP'> Continuous Trap </option>" +
+						"<option value='COUNTER_TRAP'> Counter Trap </option>" +
+						"<option value='NORMAL_TRAP'> Normal Trap </option>" +
+					"</select>" +
+			  	"</div>";
+			$( "#additional-info" ).append(additionalInfo);
+		}
+	});
+
+  	$("#additional-info").on("change", "#subtype", function(){
+		$("#scale-container").remove();
+		$("#pendulum-eff-container").remove();
+		var dynamicLevel = 
+		"<label for='level'>Nivel:</label>" +
+    		"<select type='number' id='level' name='level'>";
+			for(var i = 1; i <= 12; i++){
+				dynamicLevel += 
+				"<option value='" + i + "'>" + i +"</option>";
+			}
+			dynamicLevel +=
+			"</select>" +
+		"</label>";
+		var subType = this.value;
+		if(subType.localeCompare("LINK_MONSTER") == 0){
+			dynamicLevel = "";
+			dynamicLevel += 
+			"<label for='link_rating'>Rating de Enlace:</label>" +
+    		"<select type='number' id='link_rating' name='link_rating'>";
+			for(var i = 1; i <= 4; i++){
+				dynamicLevel += 
+				"<option value='" + i + "'>" + i +"</option>";
+			}
+			dynamicLevel +=
+			"</select>";
+		} else if(subType.localeCompare("XYZ_MONSTER") == 0){
+			dynamicLevel = "";
+			dynamicLevel += 
+			"<label for='rank'>Rango:</label>" +
+    		"<select type='number' id='rank' name='rank'>";
+			for(var i = 1; i <= 12; i++){
+				dynamicLevel += 
+				"<option value='" + i + "'>" + i +"</option>";
+			}
+			dynamicLevel +=
+			"</select>";
+		} else if(subType.localeCompare("TOKEN_MONSTER") == 0){
+			dynamicLevel = "";
+			dynamicLevel += 
+			"<label for='rank'>Rango:</label>" +
+    		"<select type='number' id='rank' name='rank'>" +
+				"<option value='0'> 0 </option>";
+			for(var i = 1; i <= 12; i++){
+				dynamicLevel += 
+				"<option value='" + i + "'>" + i +"</option>";
+			}
+			dynamicLevel +=
+			"</select>";
+		} else if(subType.localeCompare("PENDULUM_MONSTER") == 0){
+			if($("#pendulum-eff-container").length == 0){
+				$("#edition-container").after( 
+					"<div id='pendulum-eff-container'>" +
+				    	"<label for='pendulum_effect'>Efecto Péndulo:</label>" +
+				    	"<textarea id='pendulum_effect' rows=8 cols=80 name='pendulum_effect'></textarea>" +
+				  	"</div>"
+				)
+			}
+
+			if($("#scale-container").length == 0){
+				var scaleContainer = "";
+				scaleContainer += 
+				"<div id='scale-container'>" +
+					"<label for='scale'>Escala:</label>" +
+	    			"<select type='scale' id='scale' name='scale'>";
+
+
+				for(var i = 0; i <= 13; i++){
+					scaleContainer += "<option value='" + i + "'>" + i + "</option>";				
+				}
+
+				scaleContainer +=
+					"</select>" +
+				"</div>"; 
+
+				$("#stars").after(scaleContainer)
+			}
+
+		}
+		$("#additional-info #stars").html(dynamicLevel);
+
+		if(subType.localeCompare("LINK_MONSTER") == 0){
+			$("#additional-info #def-container").remove();
+		}else{
+			if($("#additional-info #def-container").length == 0){
+				$("#additional-info #atk-container").after(
+					"<br>" +
+					"<div id='def-container'>" +
+				    	"<label for='def'>DEF:</label>" +
+				    	"<input type='text' id='def' name='def'>" +
+				  	"</div>"
+				)
+			}
+		}
+
+	});
+
+  </script>
+
 </html>

@@ -96,11 +96,10 @@ function saveProduct(req, res){
 	let product = new Product();
 	product.name = req.body.name;
 	product.price = req.body.price;
-	product.state = req.body.state;
-	product.language = req.body.language;
 	product.stock = req.body.stock;
+	product.condition = req.body.condition;
+	product.language = req.body.language;
 	product.code = req.body.code;
-	product.rarity = req.body.rarity;
 	product.description = req.body.description;
 	var code = product.code;
 	code = code.toLowerCase();
@@ -108,35 +107,83 @@ function saveProduct(req, res){
 	var name = product.name;
 	name = name.toLowerCase();
 	name = name.replace(/ /g, '-');
-	var rarity = product.rarity;
+
+	var rarity = req.body.rarity;
+	var cardType = req.body.cardtype; 
+	if(cardType.localeCompare("MONSTER") == 0){
+		var subtype = req.body.subtype;
+		var specialKey = 'level'
+		var specialValue = 0;
+		if(subtype.localeCompare("LINK_MONSTER") == 0){
+			specialKey = 'link_rating';
+			specialValue = req.body.link_rating;
+		} else if(subtype.localeCompare("XYZ_MONSTER") == 0){
+			specialKey = 'rank';
+			specialValue = req.body.rank;
+		} else{
+			specialValue = req.body.level;
+		}
+		product.additional = {
+			'card_type' : req.body.cardtype,
+			'attribute' : req.body.attribute,
+			'type' : req.body.type,
+			'subtype' : subtype,
+			'ability' : req.body.ability, 
+			'rarity' : rarity,
+			[specialKey] : specialValue,
+			'edition' : req.body.edition,
+			'atk' : req.body.atk
+		}	
+
+		if(subtype.localeCompare("LINK_MONSTER") != 0){
+			product.additional['def'] = req.body.def
+		}
+
+		if(subtype.localeCompare("PENDULUM_MONSTER") == 0){
+			product.additional['scale'] = req.body.scale;
+			product.additional['pendulum_effect'] = req.body.pendulum_effect;
+		}
+		
+	}else if(cardType.localeCompare("SPELL") == 0){
+		product.additional = {
+			'card_type' : req.body.cardtype,
+			'type' : req.body.type,
+			'rarity' : rarity,
+			[specialKey] : specialValue,
+			'edition' : req.body.edition
+		}
+	}else if(cardType.localeCompare("TRAP") == 0){
+		product.additional = {
+			'card_type' : req.body.cardtype,
+			'type' : req.body.type,
+			'rarity' : rarity,
+			[specialKey] : specialValue,
+			'edition' : req.body.edition
+		}
+	}
+	
 	rarity = rarity.toLowerCase();
 	rarity = rarity.replace(/ /g, '-');
+	rarity = rarity.replace('_', '-');
 	product.tag = code + '-' + name + '-' + rarity;
 
-	if(product.state == 'NEW') product.backImage = "images/yugioh/card-back.png"
-
 	var s_code = product.code.split("-");
-
-	let frontImage = req.files.frontImage;
-
-
+	let image = req.files.image;
 	var dir = appDir + '/public/images/yugioh/' + s_code[0] + "/"
 
 	if (!fs.existsSync(dir)){
 	    fs.mkdirSync(dir);
 	}
 
-	//product.frontImage = 'img/yugioh/' + s_code[0] + "/"
+	var imageName = req.files.image.name;
+	imageName = imageName.toLowerCase();
+	imageName = imageName.replace(/ /g, '-');
 
-	var frontImageName = req.files.frontImage.name;
-	frontImageName = frontImageName.toLowerCase();
-	frontImageName = frontImageName.replace(/ /g, '-');
-
-	frontImage.mv(dir + frontImageName, function(err) {
+	image.mv(dir + imageName, function(err) {
     	if (err)
       		return res.status(500).send(err);
 
-      	product.frontImage = 'images/yugioh/' + s_code[0] + '/' +  frontImageName
+      	product.images.push('images/yugioh/' + s_code[0] + '/' +  imageName) 
 
       	product.save((err, productStored) => {
 			if(err) res.status(500).send(`Error al guardar campo ${err}`);

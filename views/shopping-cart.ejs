@@ -203,9 +203,9 @@
 	
 	<!--content-->
 	<div class="content bg-color">
-		<div class="cart-items">
+		<div class="cart-items sc-resume">
 			<div class="container">
-				<h2>Mi Carrito de Compras (<%= cart.totalQty %>)</h2>
+				<h1>Mi Carrito de Compras (<%= cart.totalQty %>)</h1>
 				<div class="sc">
 					<% products = cart.items %>
 					<% Object.keys(products).forEach(function(key, idx){
@@ -221,9 +221,9 @@
 						<% } %>
 						
 						<div class="cart-sec simpleCart_shelfItem">
-							<div class="cart-item cyc">
+							<div class="cart-item cyc item-photo">
 								<a href= <%= "/product/" + product.tag %> >
-									<img  src=<%= "../" + product.frontImage %> class="img-responsive" alt="">
+									<img  src=<%= "../" + product.images[0] %> class="img-responsive" alt="">
 								</a>
 							</div>
 							<div class="cart-item-info">
@@ -244,9 +244,9 @@
 							<div class="clearfix"></div>
 						</div>
 					</div>
-					<div class="col_100p clearfix">
+					<div class="col_100p clearfix sc-item">
 						<div class="fr col_100p prltv">
-							<div class="tr">
+							<div class="tr sc-item-options">
 								<a class="action actionLink" href= <%= "/remove-cart-item/" + product.tag %> >Eliminar</a>
 								<span class="mr10 ml10 linkClr">|</span>
 								<a class="action actionLink saveLater"  href="">Guardar para después</a>

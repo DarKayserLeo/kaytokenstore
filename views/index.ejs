@@ -208,7 +208,7 @@
 		<!--new-arrivals-->
 		<div class="new-arrivals-w3agile">
 			<div class="container">
-				<h2 class="tittle">Recientemente Añadidos</h2>
+				<h2 class="h2-tittle">Recientemente Añadidos</h2>
 				<div id="myTabContent" class="tab-content">
 					<!--
 					<div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
@@ -223,7 +223,7 @@
 									<figure>		
 										<a href=<%= "/product/" + product.tag %>>
 											<div class="grid-img">
-												<img  src=<%= "../" + product.frontImage %> class="img_responsive" alt="">
+												<img  src=<%= "../" + product.images %> class="img_responsive" alt="">
 											</div>		
 										</a>		
 									</figure>	
@@ -272,7 +272,7 @@
 								<div class="product-lcontent">
 									<div class="product-container prd-left">
 										<a href=<%= "/product/" + product.tag %> >
-											<img style="width: 100%;" src=<%= "../" + product.frontImage %>>
+											<img style="width: 100%;" src=<%= "../" + product.images[0] %>>
 										</a>
 									</div>	
 									<div class="product-container prd-right"">

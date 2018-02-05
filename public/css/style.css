@@ -559,7 +559,7 @@ h2.tittle {
     color: #1565C0; 
 }
 .new-arrivals-w3agile {
-    padding: 5em 0;
+    padding: 2.3em 0;
     background: #F9F8F8;
 	text-align:center;
 }
@@ -2143,12 +2143,14 @@ h3.account-text{
 .cart-sec{
 	/*margin-bottom:3em;*/ /*modified*/
 }
+
 .cart-item{
 	width:10%;
 	float:left;
 	margin-right:3%;
-	
+	margin-bottom: 1%;
 }
+
 .cart-item img{
 	width:100%;
 }
@@ -2329,6 +2331,10 @@ ul.total_price li.last_price span{
  font-size: 0.8125em;
   color: #000;
   line-height: 1.8em;
+}
+.cart-items h1 {
+  font-size: 2.5em;
+  margin-bottom:0.7em;
 }
 .cart-items h2 {
   font-size: 1.5em;

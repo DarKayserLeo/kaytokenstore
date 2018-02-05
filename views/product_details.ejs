@@ -84,7 +84,7 @@ $(window).load(function() {
 				<div class="container">
 					<div class="top-right">
 					<ul>
-						<li><a href="/checkout">Checkout</a></li>
+						<li><a href="/shopping-cart">Checkout</a></li>
 						<li>
 						<%if(typeof username == 'undefined'){%>
 							<a href="/register"> Crear Cuenta </a> 
@@ -215,7 +215,7 @@ $(window).load(function() {
 						</div>
 						<div class="header-right2">
 							<div class="cart box_1">
-								<a href="/checkout">
+								<a href="/shopping-cart">
 									<h3> <div class="total">
 										S/.<% if(cart){%> <%=cart.totalPrice.toFixed(2)%> <%}else{%> <%= "0.00" %> <%}%> (<%= cart.totalQty %> productos)</div>
 										<img src="images/bag.png" alt="" />
@@ -242,7 +242,7 @@ $(window).load(function() {
 						<div class="col-md-9 single-grid">
 							<div clas="single-top">
 								<div class="single-left" style="width: 38%">
-									<img src=<%= "../" + product.frontImage %> data-imagezoom="true" class="img-responsive">
+									<img src=<%= "../" + product.images[0] %> data-imagezoom="true" class="img-responsive">
 								</div>
 								<div class="single-right simpleCart_shelfItem" style="width: 60%">
 									<h4 class="single-product-img"><%= product.code + " " + product.name %></h4>
@@ -256,17 +256,26 @@ $(window).load(function() {
 									</div>
 									<p class="price item_price">S/. <%= product.price.toFixed(2) %></p>
 									<div>
-										<% var pDescription = product.description; var description = pDescription.split("\n"); %>
-										<p>
-										<% var i = 0; %>
-										<% description.forEach(function(row){ %>
-										  	<% if (i == 0) {%>
-										  		<strong> <%=  row %> </strong> <br>
-										  	<%} else{%>
-										  		<%=  row %> <br>
-										  	<% }%>
-										<% i++; }); %>
-										</p>
+										<%
+										var additional = product.additional; 
+										var subtype = "EFFECT";
+										if(additional.subtype == "NORMAL_MONSTER"){
+											subtype = "NORMAL";
+										}else if(additional.subtype == "PENDULUM_MONSTER"){%>
+											<strong><p>EFECTO PÉNDULO</p></strong> 
+											<p><%= additional.pendulum_effect %></p>
+											<br>
+										<%}
+										if(additional.card_type === "MONSTER"){%>
+											<strong>
+												<p> 
+													<%= 
+														"[ " + additional.type + " / " + subtype + " ]"
+													%>
+												</p>
+											</strong>
+										<%}%>
+										<p style="text-align: justify;">	<%= product.description %> </p>
 									</div>
 
 									<form action="/cart" method="post" id="<%= product.tag %>">

@@ -5,18 +5,19 @@ const Schema = mongoose.Schema;
 
 const ProductSchema = Schema({
 	name: String,
-	price: Number,
-	state: String,
-	language: String,
 	description: String,
+	images: [String],
+	price: Number,
 	stock: Number,
 	code: String,
-	rarity: String,
-	frontImage: String,
-	backImage: String,
+	condition: String,
+	language: String,
+	type: String,
 	tag: String,
 	options: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product'}],
-	created: { type: Date, default: Date.now }
+	additional: {},	
+	created: { type: Date, default: Date.now },
+	updated: { type: Date }
 });
 
 ProductSchema.index({tag: 'text'});
