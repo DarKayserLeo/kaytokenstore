@@ -6,6 +6,7 @@
 <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="../css/font-awesome.css" rel="stylesheet">
+<link href="../css/responsive.css" rel="stylesheet">
 <!--css-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -241,20 +242,13 @@ $(window).load(function() {
 					<div class="single-grids">
 						<div class="col-md-9 single-grid">
 							<div clas="single-top">
-								<div class="single-left" style="width: 38%">
-									<img src=<%= "../" + product.images[0] %> data-imagezoom="true" class="img-responsive">
+								<div class="left-detail">
+									<img class="prd-img-detail" src=<%= "../" + product.images[0] %>> 
 								</div>
-								<div class="single-right simpleCart_shelfItem" style="width: 60%">
-									<h4 class="single-product-img"><%= product.code + " " + product.name %></h4>
-									<!--
-									<div class="block">
-										<div class="starbox small ghosting"> </div>
-									</div>
-									-->
-									<div class="women">
-										<span class="size"> <%= product.rarity %> </span>
-									</div>
-									<p class="price item_price">S/. <%= product.price.toFixed(2) %></p>
+								<div class="right-detail">
+									<h4><%= product.code + " " + product.name %></h4>
+									<p class="product-rarity"> <%= dict.tags[product.additional.rarity] %> </p>
+									<p >S/. <%= product.price.toFixed(2) %></p>
 									<div>
 										<%
 										var additional = product.additional; 

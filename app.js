@@ -1,6 +1,7 @@
 'use strict'
 
 const config = require('./config')
+const dict = require('./dictionary')
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -197,7 +198,7 @@ app.get('/product/:productId', function(req, res){
 		//res.status(200).send({product: product})
 		let session = req.session
 		let cart = (typeof session.cart !== 'undefined') ? session.cart : {'items': {}, 'totalQty': 0, 'totalPrice': 0};
-		res.render('product_details', {product, nonce: Security.md5(req.sessionID + req.headers['user-agent']), cart: cart}); 
+		res.render('product_details', {product, nonce: Security.md5(req.sessionID + req.headers['user-agent']), cart: cart, dict}); 
 	})
 })
 

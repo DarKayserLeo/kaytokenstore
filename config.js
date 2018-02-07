@@ -7,5 +7,5 @@ module.exports = {
 	locale: {
       lang: 'en-US',
       currency: 'PEN'
-  	}
+  	},
 }
