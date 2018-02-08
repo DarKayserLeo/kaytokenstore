@@ -301,164 +301,127 @@ $(window).load(function() {
 						</div>
 						<div class="col-md-3 single-grid1">
 							<h3>Relacionados</h3>
-							<div class="recent-grids">
-								<div class="recent-left">
-									<a href="ske-015-kaiser-sea-horse-ultra-rare"><img class="img-responsive " src="../images/yugioh/SKE/kaiser-sea-horse.png" alt=""></a>	
-								</div>
-								<div class="recent-right">
-									<h6 class="best2"><a href="ske-015-kaiser-sea-horse-ultra-rare">SKE-015 Kaiser Sea Horse </a></h6>
-									<div>
-										<span class="size"> <%= product.rarity %> </span>
+							<% related_products.forEach(function(r_product){%>
+								<div class="recent-grids related-item">
+									<div class="recent-left">
+										<a href=<%= "/product/" + r_product.tag %>><img class="img-responsive " src=<%= "../" + r_product.images[0] %> alt=""></a>	
 									</div>
-									<span class=" price-in1"> S/.8.00</span>
+									<div class="recent-right">
+										<h6><a href=<%= "/product/" + r_product.tag %>><%= r_product.code + " " + r_product.name %> </a></h6>
+										<p class="product-rarity pr-related"> <%= dict.tags[r_product.additional.rarity] %> </p>
+										<p class="related-stock" >3 disponibles </p>
+										<p class="price-in1 related-price"> S/.<%=r_product.price.toFixed(2) %></p>
+									</div>	
+									<div class="clearfix"> </div>
 								</div>	
-								<div class="clearfix"> </div>
-							</div>
-							<br>
-							<div class="recent-grids">
-								<div class="recent-left">
-									<a href="ske-015-kaiser-sea-horse-ultra-rare"><img class="img-responsive " src="../images/yugioh/SKE/kaiser-sea-horse.png" alt=""></a>	
-								</div>
-								<div class="recent-right">
-									<h6 class="best2"><a href="ske-015-kaiser-sea-horse-ultra-rare">SKE-015 Kaiser Sea Horse </a></h6>
-									<div>
-										<span class="size"> <%= product.rarity %> </span>
-									</div>
-									<span class=" price-in1"> S/.8.00</span>
-								</div>	
-								<div class="clearfix"> </div>
-							</div>
-							<br><div class="recent-grids">
-								<div class="recent-left">
-									<a href="ske-015-kaiser-sea-horse-ultra-rare"><img class="img-responsive " src="../images/yugioh/SKE/kaiser-sea-horse.png" alt=""></a>	
-								</div>
-								<div class="recent-right">
-									<h6 class="best2"><a href="ske-015-kaiser-sea-horse-ultra-rare">SKE-015 Kaiser Sea Horse </a></h6>
-									<div>
-										<span class="size"> <%= product.rarity %> </span>
-									</div>
-									<span class=" price-in1"> S/.8.00</span>
-								</div>	
-								<div class="clearfix"> </div>
-							</div>
-							<br><div class="recent-grids">
-								<div class="recent-left">
-									<a href="ske-015-kaiser-sea-horse-ultra-rare"><img class="img-responsive " src="../images/yugioh/SKE/kaiser-sea-horse.png" alt=""></a>	
-								</div>
-								<div class="recent-right">
-									<h6 class="best2"><a href="ske-015-kaiser-sea-horse-ultra-rare">SKE-015 Kaiser Sea Horse </a></h6>
-									<div>
-										<span class="size"> <%= product.rarity %> </span>
-									</div>
-									<span class=" price-in1"> S/.8.00</span>
-								</div>	
-								<div class="clearfix"> </div>
-							</div>
+							<% })%>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
 				</div>
 			</div>
 			<!--single-->
+			<!--
 			<div class="new-arrivals-w3agile">
-					<div class="container">
-						<h3 class="tittle1">Los más comprados de la semana</h3>
-						<div class="arrivals-grids">
-							<div class="col-md-3 arrival-grid simpleCart_shelfItem">
-								<div class="grid-arr">
-									<div  class="grid-arrival">
-										<figure>		
-											<a href="ske-015-kaiser-sea-horse-ultra-rare">
-												<div class="grid-img">
-													<img  src="../images/yugioh/SKE/kaiser-sea-horse.png" class="img-responsive" alt="">
-												</div>		
-											</a>		
-										</figure>	
-									</div>
-									<div class="ribben">
-										<p>NUEVO</p>
-									</div>
-									<div class="ribben2">
-										<p>EN STOCK</p>
-									</div>
-									<div class="women">
-										<h6><a href="ske-015-kaiser-sea-horse-ultra-rare">SKE-015 Kaiser Sea Horse</a></h6>
-										<span class="size">Ultra Rare </span>
-										<p ><em class="item_price">S/.8.00</em></p>
-										<a href="#" data-text="Add To Cart" class="my-cart-b item_add">Añadir al Carrito</a>
-									</div>
+				<div class="container">
+					<h3 class="tittle1">Los más comprados de la semana</h3>
+					<div class="arrivals-grids">
+						<div class="col-md-3 arrival-grid simpleCart_shelfItem">
+							<div class="grid-arr">
+								<div  class="grid-arrival">
+									<figure>		
+										<a href="ske-015-kaiser-sea-horse-ultra-rare">
+											<div class="grid-img">
+												<img  src="../images/yugioh/SKE/kaiser-sea-horse.png" class="img-responsive" alt="">
+											</div>		
+										</a>		
+									</figure>	
+								</div>
+								<div class="ribben">
+									<p>NUEVO</p>
+								</div>
+								<div class="ribben2">
+									<p>EN STOCK</p>
+								</div>
+								<div class="women">
+									<h6><a href="ske-015-kaiser-sea-horse-ultra-rare">SKE-015 Kaiser Sea Horse</a></h6>
+									<span class="size">Ultra Rare </span>
+									<p ><em class="item_price">S/.8.00</em></p>
+									<a href="#" data-text="Add To Cart" class="my-cart-b item_add">Añadir al Carrito</a>
 								</div>
 							</div>
-							<div class="col-md-3 arrival-grid simpleCart_shelfItem">
-								<div class="grid-arr">
-									<div  class="grid-arrival">
-										<figure>		
-											<a href="ske-015-kaiser-sea-horse-ultra-rare">
-												<div class="grid-img">
-													<img  src="../images/yugioh/SKE/kaiser-sea-horse.png" class="img-responsive" alt="">
-												</div>		
-											</a>		
-										</figure>	
-									</div>
-									<div class="ribben1">
-										<p>AGOTADO</p>
-									</div>
-									<div class="women">
-										<h6><a href="ske-015-kaiser-sea-horse-ultra-rare">SKE-015 Kaiser Sea Horse</a></h6>
-										<span class="size">Ultra Rare </span>
-										<p ><em class="item_price">S/.8.00</em></p>
-										<a href="#" data-text="Add To Cart" class="my-cart-b item_add">Añadir al Carrito</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 arrival-grid simpleCart_shelfItem">
-								<div class="grid-arr">
-									<div  class="grid-arrival">
-										<figure>		
-											<a href="ske-015-kaiser-sea-horse-ultra-rare">
-												<div class="grid-img">
-													<img  src="../images/yugioh/SKE/kaiser-sea-horse.png" class="img-responsive" alt="">
-												</div>		
-											</a>		
-										</figure>	
-									</div>
-									<div class="ribben2">
-										<p>EN STOCK</p>
-									</div>
-									<div class="women">
-										<h6><a href="ske-015-kaiser-sea-horse-ultra-rare">SKE-015 Kaiser Sea Horse</a></h6>
-										<span class="size">Ultra Rare </span>
-										<p ><em class="item_price">S/.8.00</em></p>
-										<a href="#" data-text="Add To Cart" class="my-cart-b item_add">Añadir al Carrito</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 arrival-grid simpleCart_shelfItem">
-								<div class="grid-arr">
-									<div  class="grid-arrival">
-										<figure>		
-											<a href="ske-015-kaiser-sea-horse-ultra-rare">
-												<div class="grid-img">
-													<img  src="../images/yugioh/SKE/kaiser-sea-horse.png" class="img-responsive" alt="">
-												</div>		
-											</a>		
-										</figure>	
-									</div>
-									<div class="ribben">
-										<p>NUEVO</p>
-									</div>
-									<div class="women">
-										<h6><a href="ske-015-kaiser-sea-horse-ultra-rare">SKE-015 Kaiser Sea Horse</a></h6>
-										<span class="size">Ultra Rare </span>
-										<p ><em class="item_price">S/.8.00</em></p>
-										<a href="#" data-text="Add To Cart" class="my-cart-b item_add">Añadir al Carrito</a>
-									</div>
-								</div>
-							</div>
-							<div class="clearfix"></div>
 						</div>
+						<div class="col-md-3 arrival-grid simpleCart_shelfItem">
+							<div class="grid-arr">
+								<div  class="grid-arrival">
+									<figure>		
+										<a href="ske-015-kaiser-sea-horse-ultra-rare">
+											<div class="grid-img">
+												<img  src="../images/yugioh/SKE/kaiser-sea-horse.png" class="img-responsive" alt="">
+											</div>		
+										</a>		
+									</figure>	
+								</div>
+								<div class="ribben1">
+									<p>AGOTADO</p>
+								</div>
+								<div class="women">
+									<h6><a href="ske-015-kaiser-sea-horse-ultra-rare">SKE-015 Kaiser Sea Horse</a></h6>
+									<span class="size">Ultra Rare </span>
+									<p ><em class="item_price">S/.8.00</em></p>
+									<a href="#" data-text="Add To Cart" class="my-cart-b item_add">Añadir al Carrito</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 arrival-grid simpleCart_shelfItem">
+							<div class="grid-arr">
+								<div  class="grid-arrival">
+									<figure>		
+										<a href="ske-015-kaiser-sea-horse-ultra-rare">
+											<div class="grid-img">
+												<img  src="../images/yugioh/SKE/kaiser-sea-horse.png" class="img-responsive" alt="">
+											</div>		
+										</a>		
+									</figure>	
+								</div>
+								<div class="ribben2">
+									<p>EN STOCK</p>
+								</div>
+								<div class="women">
+									<h6><a href="ske-015-kaiser-sea-horse-ultra-rare">SKE-015 Kaiser Sea Horse</a></h6>
+									<span class="size">Ultra Rare </span>
+									<p ><em class="item_price">S/.8.00</em></p>
+									<a href="#" data-text="Add To Cart" class="my-cart-b item_add">Añadir al Carrito</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 arrival-grid simpleCart_shelfItem">
+							<div class="grid-arr">
+								<div  class="grid-arrival">
+									<figure>		
+										<a href="ske-015-kaiser-sea-horse-ultra-rare">
+											<div class="grid-img">
+												<img  src="../images/yugioh/SKE/kaiser-sea-horse.png" class="img-responsive" alt="">
+											</div>		
+										</a>		
+									</figure>	
+								</div>
+								<div class="ribben">
+									<p>NUEVO</p>
+								</div>
+								<div class="women">
+									<h6><a href="ske-015-kaiser-sea-horse-ultra-rare">SKE-015 Kaiser Sea Horse</a></h6>
+									<span class="size">Ultra Rare </span>
+									<p ><em class="item_price">S/.8.00</em></p>
+									<a href="#" data-text="Add To Cart" class="my-cart-b item_add">Añadir al Carrito</a>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
 					</div>
 				</div>
+			</div>
+			-->
 			<!--new-arrivals-->
 		</div>
 		<!--content-->

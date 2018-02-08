@@ -57,7 +57,7 @@ function getLastProducts(req, res){ //esto lo estoy llamando directo en el index
 
 function searchProduct(req, res){
 	var searchText = req.query.search;
-	Product.find({$text: {$search: searchText}}, {score: {$meta: 'textScore'}}).sort({score: {$meta: 'textScore'}}).exec((err, products) => {
+	Product.find({$text: {$search: searchText}}, {score: {$meta: 'textScore'}}).sort('tag').exec((err, products) => {
 		var rc = req.headers.cookie
 		if(rc){
 			var cookies = rc.split(';')

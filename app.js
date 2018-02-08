@@ -195,10 +195,18 @@ app.get('/product/:productId', function(req, res){
 				}
 			}
 		}
-		//res.status(200).send({product: product})
-		let session = req.session
-		let cart = (typeof session.cart !== 'undefined') ? session.cart : {'items': {}, 'totalQty': 0, 'totalPrice': 0};
-		res.render('product_details', {product, nonce: Security.md5(req.sessionID + req.headers['user-agent']), cart: cart, dict}); 
+
+		var code_s = product.code.split('-'); 
+		var options = {limit: 4};
+		Product.findRandom({$text: {$search: code_s[0]}}, {score: {$meta: 'textScore'}}, options, function(err, related_products){
+			let session = req.session
+			let cart = (typeof session.cart !== 'undefined') ? session.cart : {'items': {}, 'totalQty': 0, 'totalPrice': 0};
+			res.render('product_details', {product, related_products, nonce: Security.md5(req.sessionID + req.headers['user-agent']), cart: cart, dict}); 
+		});
+
+		//Product.syncRandom(function (err, result) {
+		  //console.log(result.updated);
+		//});
 	})
 })
 

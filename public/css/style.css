@@ -1784,17 +1784,29 @@ p.price {
     width: 24%;
 }
 .recent-right {
-    float: right;
-    width: 68%;
-	margin-top:1em;
+  float: right;
+  width: 76%;
+  padding-left: 0.5em;
+  padding-top: 0.5em;
 }
 span.price-in1 {
     font-size: 1.2em;
-    color: #AF1D0D;
+    color: #333;
     font-weight: bold;
     margin-top: 0.5em;
     display: block;
+    line-height: 0.9em;
 }
+
+p.price-in1 {
+    font-size: 1.2em;
+    color: #333;
+    font-weight: bold;
+    margin-top: 0.5em;
+    display: block;
+    line-height: 0.9em;
+}
+
 .best2 a {
     font-size: 1.5em;
     text-decoration: none;

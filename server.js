@@ -10,6 +10,8 @@
 //npm install --save js-cookie-remove-all //quitar esta no sirve
 //npm install express-session --save
 //npm install connect-mongodb-session --save
+//npm install mongoose-random -S
+//npm install mongoose-simple-random -S <--mucho mejor y mas completo que mongoose-random
 
 'use strict'
 

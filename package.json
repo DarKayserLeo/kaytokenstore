@@ -27,6 +27,8 @@
     "mime": "latest",
     "moment": "^2.19.3",
     "mongoose": "^4.13.6",
+    "mongoose-random": "^0.1.1",
+    "mongoose-simple-random": "^0.4.1",
     "uid2": "latest",
     "uuid": "^3.1.0"
   },

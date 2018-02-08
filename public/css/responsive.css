@@ -383,6 +383,49 @@
 	font-weight: bold;
 }
 
+.pr-related{
+	font-size: 0.9em;
+}
+
+.related-item{
+	border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 4px 4px 1px #eee;
+    padding: 0.3em;
+    margin-bottom: 0.5em;
+    position: relative;
+    float: left;
+}
+
+.related-item a{
+	color: #1565C0 !important;
+  	font-size: 1.2em;
+  	font-family: 'Open Sans', sans-serif 
+}
+
+.related-stock{
+	position: absolute;
+	float:left; 
+	margin-top: 0.5em; 
+	display: block; 
+	width: 70%;
+	font-size: 0.9em;
+	font-weight: bold;
+    color: #0d59af;
+    bottom: 0.4em;
+    right: 0.5em;
+}
+
+.related-price{
+	position: absolute;
+	float:left; 
+	width: 30%;
+    bottom: 0.4em;
+    right: 0.4em;
+    text-align: right;
+}
+
 @media screen and (max-width: 320px){
 	.img_responsive{height: 360px;}
 	.select-stock{
@@ -500,6 +543,19 @@
 
 	.single-grid{
 		padding: 0;
+	}
+
+	.related-stock{
+		margin-top: 1.5em; /*???*/
+		width: 70%;
+		bottom: 0.8em;
+	}
+
+	p.price-in1{
+		font-size: 1.3em;
+		margin-top: 1.16em;
+		right: 0.5em;
+		bottom: 0.5em;
 	}
 }
 
